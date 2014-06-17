@@ -84,7 +84,7 @@ namespace ROD_Deck_Builder
             return table;
         }
 
-        private static ERarity ParseRarity(HtmlNodeCollection rowcolumn)
+        private static ERarity ParseRarity(HtmlNode rowcolumn)
         {
             ERarity eRarity = ERarity.None;
             Match match = Regex.Match(rowcolumn.InnerText, @"\d+");
@@ -106,9 +106,9 @@ namespace ROD_Deck_Builder
 
         private static ERealm ParseRealm(HtmlNode rowcolumns)
         {
-            ERealm crealm = ERealm.None;
             HtmlNode spanChild1 = rowcolumns.SelectSingleNode("./span");
             string realm = rowcolumns.SelectSingleNode("./span").InnerText;
+            ERealm crealm = ERealm.None;
             Match match = Regex.Match(realm, @"\w+");
             if (match.Success)
             {
@@ -122,21 +122,39 @@ namespace ROD_Deck_Builder
             return crealm;
         }
 
+        // This <td> has a single <span> with a single "color" attribute and a single value.
         private static EFaction ParseFaction(HtmlNode rowcolumns)
         {
-            HtmlNode spanChild1 = rowcolumns.SelectSingleNode("./span");
-            string faction = rowcolumns.SelectSingleNode("./span").Attributes;
             EFaction cfaction = EFaction.None;
-            Match match = Regex.Match(faction, @"\w+");
-            if (match.Success)
+
+            // Get the style from the <span> that contains the "color" attribute.
+            HtmlAttribute spanStyle = rowcolumns.SelectSingleNode("./span").Attributes
+                .Where(style => style.Value.Contains("color"))
+                .First();
+            if (spanStyle != null)
             {
-                if (faction == "\xe2\x9a\x94\x0a")
-                { cfaction = EFaction.Melee; };
-                if (faction == "G")
-                { cfaction = EFaction.Magic; };
-                if (faction == "J")
-                { cfaction = EFaction.Charm; };
+                // Split apart all the attributes, and only keep the one with the "color" attribute.
+                // This returns the value of that "color:[something]" pair.
+                string color = spanStyle.Value.Split(';')
+                    .Where(s => s.Contains("color"))
+                    .First()
+                    .Split(':')[1];
+                switch (color)
+                {
+                    case "Fuchsia":
+                            cfaction = EFaction.Charm;
+                            break;
+
+                    case "Gold":
+                            cfaction = EFaction.Melee;
+                            break;
+
+                    case "LimeGreen":
+                            cfaction = EFaction.Magic;
+                            break;
+                }
             }
+
             return cfaction;
         }
     }

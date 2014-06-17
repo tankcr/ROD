@@ -23,7 +23,7 @@ namespace ROD_Deck_Builder
         None,
         Chaos,
         Genesis,
-        Justice, 
+        Justice,
     }
 
     public enum EFaction
