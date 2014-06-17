@@ -6,23 +6,57 @@ using System.Threading.Tasks;
 
 namespace ROD_Deck_Builder
 {
+    public enum ERarity
+    {
+        None,
+        Rare1,
+        Rare2,
+        Rare3,
+        Rare4,
+        Rare5,
+        Rare6,
+        Rare7
+    }
+
+    public enum ERealm
+    {
+        None
+        // TODO: Fill this in
+    }
+
+    public enum EFaction
+    {
+        None
+        // TODO: Fill this in
+    }
+
+    public enum ESkill
+    {
+        None
+        // TODO: Fill this in
+    }
+
+    public enum EEventSkill
+    {
+        None
+        // TODO: Fill this in
+    }
+
     public class Card
     {
-        public string Rarity;
+        public ERarity Rarity;
         public string Name;
-        public string Realm;
-        public string Faction;
-        public string MaxAtk;
-        public string MaxDef;
+        public ERealm Realm;
+        public EFaction Faction;
+        public int MaxAtk;
+        public int MaxDef;
         public int Total;
         public int Cost;
         public int AttEff;
         public int DefEff;
         public int OverallEff;
-        public string Skill;
-        public string EventSkl1;
-        public string EventSkl2;
-
-
+        public ESkill Skill;
+        public EEventSkill EventSkl1;
+        public EEventSkill EventSkl2;
     }
 }
