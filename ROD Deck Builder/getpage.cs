@@ -55,30 +55,30 @@ namespace ROD_Deck_Builder
             foreach (HtmlNode header in tableHeaders)
             {
                 string columnName = header.InnerText.Trim();
-                // TODO: Do something with the column names
             }
 
             List<HtmlNode> tableRows = htmltable.SelectNodes("tr").OfType<HtmlNode>().Skip(1).ToList();
             foreach (HtmlNode row in tableRows)
             {
                 Card item = new Card();
+
                 HtmlNodeCollection rowcolumns = row.SelectNodes("td");
 
                 item.Rarity = ParseRarity(rowcolumns[0]);
                 item.Name = Convert.ToString(rowcolumns[1].InnerText).TrimEnd('\r', '\n');
                 item.Realm = ParseRealm(rowcolumns[2]);
+                item.Faction = ParseFaction(rowcolumns[3]);
 
-                item.Faction = Convert.ToString(rowcolumns[3].InnerText).TrimEnd('\r', '\n');
-                item.MaxAtk = Convert.ToString(rowcolumns[4].InnerText).TrimEnd('\r', '\n');
-                item.MaxDef = Convert.ToString(rowcolumns[5].InnerText).TrimEnd('\r', '\n');
+                //item.MaxAtk = Convert.ToString(rowcolumns[4].InnerText).TrimEnd('\r', '\n');
+                //item.MaxDef = Convert.ToString(rowcolumns[5].InnerText).TrimEnd('\r', '\n');
                 item.Total = Convert.ToInt32(rowcolumns[6].InnerText);
                 item.Cost = Convert.ToInt32(rowcolumns[7].InnerText);
                 item.AttEff = Convert.ToInt32(rowcolumns[8].InnerText);
                 item.DefEff = Convert.ToInt32(rowcolumns[9].InnerText);
                 item.OverallEff = Convert.ToInt32(rowcolumns[10].InnerText);
-                item.Skill = Convert.ToString(rowcolumns[11].InnerText).TrimEnd('\r', '\n');
-                item.EventSkl1 = Convert.ToString(rowcolumns[12].InnerText).TrimEnd('\r', '\n');
-                item.EventSkl2 = Convert.ToString(rowcolumns[13].InnerText).TrimEnd('\r', '\n');
+                //item.Skill = Convert.ToString(rowcolumns[11].InnerText).TrimEnd('\r', '\n');
+                //item.EventSkl1 = Convert.ToString(rowcolumns[12].InnerText).TrimEnd('\r', '\n');
+                //item.EventSkl2 = Convert.ToString(rowcolumns[13].InnerText).TrimEnd('\r', '\n');
                 table.TableData.Add(item);
             }
             return table;
@@ -104,14 +104,40 @@ namespace ROD_Deck_Builder
             return eRarity;
         }
 
-        private static ERealm ParseRealm(HtmlNodeCollection rowcolumns)
+        private static ERealm ParseRealm(HtmlNode rowcolumns)
         {
-            ERealm eRealm = ERealm.None;
+            ERealm crealm = ERealm.None;
+            HtmlNode spanChild1 = rowcolumns.SelectSingleNode("./span");
             string realm = rowcolumns.SelectSingleNode("./span").InnerText;
-            if (realm == "C") eRealm = ERealm.Chaos;
-            else if (realm == "G") eRealm = ERealm.Genesis;
-            else if (realm == "J") eRealm = ERealm.Justice;
-            return eRealm;
+            Match match = Regex.Match(realm, @"\w+");
+            if (match.Success)
+            {
+                if (realm == "C")
+                { crealm = ERealm.Chaos; };
+                if (realm == "G")
+                { crealm = ERealm.Genesis; };
+                if (realm == "J")
+                { crealm = ERealm.Justice; };
+            }
+            return crealm;
+        }
+
+        private static EFaction ParseFaction(HtmlNode rowcolumns)
+        {
+            HtmlNode spanChild1 = rowcolumns.SelectSingleNode("./span");
+            string faction = rowcolumns.SelectSingleNode("./span").Attributes;
+            EFaction cfaction = EFaction.None;
+            Match match = Regex.Match(faction, @"\w+");
+            if (match.Success)
+            {
+                if (faction == "\xe2\x9a\x94\x0a")
+                { cfaction = EFaction.Melee; };
+                if (faction == "G")
+                { cfaction = EFaction.Magic; };
+                if (faction == "J")
+                { cfaction = EFaction.Charm; };
+            }
+            return cfaction;
         }
     }
 }

@@ -9,25 +9,29 @@ namespace ROD_Deck_Builder
     public enum ERarity
     {
         None,
-        Rare1,
-        Rare2,
-        Rare3,
-        Rare4,
-        Rare5,
-        Rare6,
-        Rare7
+        Common,
+        Uncommon,
+        Rare,
+        SuperRare,
+        MegaRare,
+        UltraRare,
+        LegendaryRare
     }
 
     public enum ERealm
     {
-        None
-        // TODO: Fill this in
+        None,
+        Chaos,
+        Genesis,
+        Justice, 
     }
 
     public enum EFaction
     {
-        None
-        // TODO: Fill this in
+        None,
+        Melee,
+        Magic,
+        Charm
     }
 
     public enum ESkill
