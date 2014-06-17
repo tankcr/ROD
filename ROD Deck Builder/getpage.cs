@@ -31,6 +31,7 @@ namespace ROD_Deck_Builder
         {
 
             Cards table = new Cards();
+            table.TableData = new List<Card>();
             string weburl = url;
             WebClient dl = new WebClient();
             dl.Encoding = Encoding.UTF8;
