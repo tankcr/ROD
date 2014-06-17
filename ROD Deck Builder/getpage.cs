@@ -7,6 +7,7 @@ using System.Net;
 using System.IO;
 using HtmlAgilityPack;
 using System.Xml.Serialization;
+using System.Text.RegularExpressions;
 
 namespace ROD_Deck_Builder
 {
@@ -50,36 +51,76 @@ namespace ROD_Deck_Builder
             foreach (var row in tableRows)
             
             {
-                
-                //string singleLine;
-                //string[] splitApart = singleLine.Split(',');
                 Card item = new Card();
-                var rowcolumns = row.SelectNodes("td");
-                //foreach (var column in rowcolumns)
-                //{
-                    
-                    //string columnValue = column.InnerText.Trim();
-                    //item.Rarity = columnValue;
-                    //table.TableData.Add(item);
-                //}
-                    //Card item = new Card();
-                    item.Rarity = Convert.ToString(rowcolumns[0].InnerText).TrimEnd('\r', '\n');
+
+                HtmlNodeCollection rowcolumns = row.SelectNodes("td");
+                    Match match = Regex.Match(rowcolumns[0].InnerText, @"\d+");
+                    if (match.Success)
+                    {
+                        int rarity = 0;
+                        int.TryParse(match.Value, out rarity);
+                        if (rarity >= 1 && rarity <= 7)
+                        {
+                            item.Rarity = (ERarity)rarity;
+                        }
+                        else
+                        {
+                            item.Rarity = ERarity.None;
+                        }
+                    }
                     item.Name = Convert.ToString(rowcolumns[1].InnerText).TrimEnd('\r', '\n');
-                    item.Realm = Convert.ToString(rowcolumns[2].InnerText).TrimEnd('\r', '\n');
-                    item.Faction = Convert.ToString(rowcolumns[3].InnerText).TrimEnd('\r', '\n');
-                    item.MaxAtk = Convert.ToString(rowcolumns[4].InnerText).TrimEnd('\r', '\n');
-                    item.MaxDef = Convert.ToString(rowcolumns[5].InnerText).TrimEnd('\r', '\n');
+                    item.Realm = ParseRealm(rowcolumns[2]);
+                    //item.Realm = Convert.ToString(rowcolumns[2].InnerText).TrimEnd('\r', '\n');
+                    item.Faction = ParseFaction(rowcolumns[3]);
+                    //item.MaxAtk = Convert.ToString(rowcolumns[4].InnerText).TrimEnd('\r', '\n');
+                    //item.MaxDef = Convert.ToString(rowcolumns[5].InnerText).TrimEnd('\r', '\n');
                     item.Total = Convert.ToInt32(rowcolumns[6].InnerText);
                     item.Cost = Convert.ToInt32(rowcolumns[7].InnerText);
                     item.AttEff = Convert.ToInt32(rowcolumns[8].InnerText);
                     item.DefEff = Convert.ToInt32(rowcolumns[9].InnerText);
                     item.OverallEff = Convert.ToInt32(rowcolumns[10].InnerText);
-                    item.Skill = Convert.ToString(rowcolumns[11].InnerText).TrimEnd('\r', '\n');
-                    item.EventSkl1 = Convert.ToString(rowcolumns[12].InnerText).TrimEnd('\r', '\n');
-                    item.EventSkl2 = Convert.ToString(rowcolumns[13].InnerText).TrimEnd('\r', '\n');
+                    //item.Skill = Convert.ToString(rowcolumns[11].InnerText).TrimEnd('\r', '\n');
+                    //item.EventSkl1 = Convert.ToString(rowcolumns[12].InnerText).TrimEnd('\r', '\n');
+                    //item.EventSkl2 = Convert.ToString(rowcolumns[13].InnerText).TrimEnd('\r', '\n');
                     table.TableData.Add(item);
             }
            return table;
         }
+
+        private static ERealm ParseRealm(HtmlNode rowcolumns)
+        {
+            HtmlNode spanChild1 = rowcolumns.SelectSingleNode("./span");
+            string realm = rowcolumns.SelectSingleNode("./span").InnerText;
+            ERealm crealm = ERealm.None;
+            Match match = Regex.Match(realm, @"\w+");
+            if (match.Success)
+            {
+                if (realm == "C")
+                { crealm = ERealm.Chaos; };
+                if (realm == "G")
+                { crealm = ERealm.Genesis; };
+                if (realm == "J")
+                { crealm = ERealm.Justice; };
+            }
+            return crealm;
+        }
+        private static EFaction ParseFaction(HtmlNode rowcolumns)
+        {
+            HtmlNode spanChild1 = rowcolumns.SelectSingleNode("./span");
+            string faction = rowcolumns.SelectSingleNode("./span").Attributes;
+            EFaction cfaction = EFaction.None;
+            Match match = Regex.Match(faction, @"\w+");
+            if (match.Success)
+            {
+                if (faction == "\xe2\x9a\x94\x0a")
+                { cfaction = EFaction.Melee; };
+                if (faction == "G")
+                { cfaction = EFaction.Magic; };
+                if (faction == "J")
+                { cfaction = EFaction.Charm; };
+            }
+            return cfaction;
+        }
+        
     }
 }
