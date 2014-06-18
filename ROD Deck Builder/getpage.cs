@@ -52,11 +52,6 @@ namespace ROD_Deck_Builder
             // Grab the name of each column from the table headers
             HtmlNode htmltable = mydoc.DocumentNode.SelectSingleNode("//table[@class='witiable sortable']");
             HtmlNodeCollection tableHeaders = htmltable.SelectNodes("tr[th]/th");
-            foreach (HtmlNode header in tableHeaders)
-            {
-                string columnName = header.InnerText.Trim();
-            }
-
             List<HtmlNode> tableRows = htmltable.SelectNodes("tr").OfType<HtmlNode>().Skip(1).ToList();
             foreach (HtmlNode row in tableRows)
             {
@@ -110,19 +105,19 @@ namespace ROD_Deck_Builder
                 item.Skill = "None";
                 try
                 {
-                    item.Skill = Convert.ToString(rowcolumns[11].InnerText).TrimEnd('\r', '\n');
+                    item.Skill = (rowcolumns[11].InnerText).TrimEnd('\r', '\n');
                 }
                 catch { }
                 item.EventSkl1 = "None";
                 try
                 {
-                    item.EventSkl1 = Convert.ToString(rowcolumns[12].InnerText).TrimEnd('\r', '\n');
+                    item.EventSkl1 = (rowcolumns[12].InnerText).TrimEnd('\r', '\n');
                 }
                 catch { }
                 item.EventSkl2 = "None";
                 try
                 {
-                    item.EventSkl2 = Convert.ToString(rowcolumns[12].InnerText).TrimEnd('\r', '\n');
+                    item.EventSkl2 = (rowcolumns[12].InnerText).TrimEnd('\r', '\n');
                 }
                 catch { }
                 table.TableData.Add(item);

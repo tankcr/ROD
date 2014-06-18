@@ -9,4 +9,3 @@ C:\Users\kriroy\Documents\GitHub\ROD Deck Builder\ROD\ROD Deck Builder\obj\Debug
 C:\Users\kriroy\Documents\GitHub\ROD Deck Builder\ROD\ROD Deck Builder\obj\Debug\ROD Deck Builder.exe
 C:\Users\kriroy\Documents\GitHub\ROD Deck Builder\ROD\ROD Deck Builder\obj\Debug\ROD Deck Builder.pdb
 C:\Users\kriroy\Documents\GitHub\ROD Deck Builder\ROD\ROD Deck Builder\obj\Debug\ROD_Deck_Builder.Form1.resources
-C:\Users\kriroy\Documents\GitHub\ROD Deck Builder\ROD\ROD Deck Builder\obj\Debug\ROD Deck Builder.csprojResolveAssemblyReference.cache
