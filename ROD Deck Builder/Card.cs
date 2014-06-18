@@ -33,19 +33,7 @@ namespace ROD_Deck_Builder
         Magic,
         Charm
     }
-
-    public enum ESkill
-    {
-        None
-        // TODO: Fill this in
-    }
-
-    public enum EEventSkill
-    {
-        None
-        // TODO: Fill this in
-    }
-
+    
     public class Card
     {
         public ERarity Rarity;
@@ -59,8 +47,8 @@ namespace ROD_Deck_Builder
         public int AttEff;
         public int DefEff;
         public int OverallEff;
-        public ESkill Skill;
-        public EEventSkill EventSkl1;
-        public EEventSkill EventSkl2;
+        public string Skill;
+        public string EventSkl1;
+        public string EventSkl2;
     }
 }
