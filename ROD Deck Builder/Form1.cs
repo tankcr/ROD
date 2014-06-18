@@ -24,6 +24,14 @@ namespace ROD_Deck_Builder
 //            //
 //            foreach(HtmlNode table in webdoc.DocumentNode.SelectNodes("//a[@class=]"))
 //            {HtmlNode newpagedata = table;}
+            listBox1.DisplayMember = "Name";
+            listBox1.DataSource = newpage.TableData;
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

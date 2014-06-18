@@ -68,17 +68,63 @@ namespace ROD_Deck_Builder
                 item.Name = Convert.ToString(rowcolumns[1].InnerText).TrimEnd('\r', '\n');
                 item.Realm = ParseRealm(rowcolumns[2]);
                 item.Faction = ParseFactionByColor(rowcolumns[3]);
-
-                //item.MaxAtk = Convert.ToString(rowcolumns[4].InnerText).TrimEnd('\r', '\n');
-                //item.MaxDef = Convert.ToString(rowcolumns[5].InnerText).TrimEnd('\r', '\n');
-                item.Total = Convert.ToInt32(rowcolumns[6].InnerText);
-                item.Cost = Convert.ToInt32(rowcolumns[7].InnerText);
-                item.AttEff = Convert.ToInt32(rowcolumns[8].InnerText);
-                item.DefEff = Convert.ToInt32(rowcolumns[9].InnerText);
-                item.OverallEff = Convert.ToInt32(rowcolumns[10].InnerText);
-                //item.Skill = Convert.ToString(rowcolumns[11].InnerText).TrimEnd('\r', '\n');
-                //item.EventSkl1 = Convert.ToString(rowcolumns[12].InnerText).TrimEnd('\r', '\n');
-                //item.EventSkl2 = Convert.ToString(rowcolumns[13].InnerText).TrimEnd('\r', '\n');
+                item.MaxAtk = 0;
+                try
+                {
+                    item.MaxAtk = Convert.ToInt32(rowcolumns[4].InnerText);
+                }
+                catch { };
+                item.MaxDef = 0;
+                try
+                {
+                    item.MaxDef = Convert.ToInt32(rowcolumns[5].InnerText);
+                }
+                catch { }
+                item.Total = (item.MaxAtk + item.MaxDef);
+                try
+                {
+                    item.Total = Convert.ToInt32(rowcolumns[6].InnerText);
+                }
+                catch { }
+                item.Cost = 0;
+                try
+                {
+                    item.Cost = Convert.ToInt32(rowcolumns[7].InnerText);
+                }
+                catch { }
+                try
+                {
+                    item.AttEff = (item.MaxAtk / item.Cost);
+                }
+                catch { item.AttEff = 0; }
+                try
+                {
+                    item.DefEff = (item.MaxDef / item.Cost);
+                }
+                catch { item.DefEff = 0; }
+                try
+                {
+                    item.OverallEff = (item.Total / item.Cost);
+                }
+                catch { item.OverallEff = 0; }
+                item.Skill = "None";
+                try
+                {
+                    item.Skill = Convert.ToString(rowcolumns[11].InnerText).TrimEnd('\r', '\n');
+                }
+                catch { }
+                item.EventSkl1 = "None";
+                try
+                {
+                    item.EventSkl1 = Convert.ToString(rowcolumns[12].InnerText).TrimEnd('\r', '\n');
+                }
+                catch { }
+                item.EventSkl2 = "None";
+                try
+                {
+                    item.EventSkl2 = Convert.ToString(rowcolumns[12].InnerText).TrimEnd('\r', '\n');
+                }
+                catch { }
                 table.TableData.Add(item);
             }
             return table;
@@ -128,9 +174,14 @@ namespace ROD_Deck_Builder
             EFaction cfaction = EFaction.None;
 
             // Get the style from the <span> that contains the "color" attribute.
-            HtmlAttribute spanStyle = rowcolumns.SelectSingleNode("./span").Attributes
-                .Where(style => style.Value.Contains("color"))
-                .First();
+            HtmlAttribute spanStyle = null;
+            try
+            {
+                spanStyle = rowcolumns.SelectSingleNode("./span").Attributes
+                    .Where(style => style.Value.Contains("color"))
+                    .First();
+            }
+            catch { spanStyle = null; };
             if (spanStyle != null)
             {
                 // Split apart all the attributes, and only keep the one with the "color" attribute.
