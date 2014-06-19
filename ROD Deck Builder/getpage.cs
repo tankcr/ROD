@@ -65,69 +65,77 @@ namespace ROD_Deck_Builder
                 HtmlNodeCollection rowcolumns = row.SelectNodes("td");
 
                 item.Rarity = ParseRarity(rowcolumns[0]);
-                item.Name = Convert.ToString(rowcolumns[1].InnerText).TrimEnd('\r', '\n');
+                item.Name = ParseStringFromHtml(rowcolumns[1]);
                 item.Realm = ParseRealm(rowcolumns[2]);
                 item.Faction = ParseFactionByColor(rowcolumns[3]);
-                item.MaxAtk = 0;
-                try
-                {
-                    item.MaxAtk = Convert.ToInt32(rowcolumns[4].InnerText);
-                }
-                catch { };
-                item.MaxDef = 0;
-                try
-                {
-                    item.MaxDef = Convert.ToInt32(rowcolumns[5].InnerText);
-                }
-                catch { }
+                item.MaxAtk = ParseIntFromHtml(rowcolumns[4]);
+                item.MaxDef = ParseIntFromHtml(rowcolumns[5]);
                 item.Total = (item.MaxAtk + item.MaxDef);
-                try
-                {
-                    item.Total = Convert.ToInt32(rowcolumns[6].InnerText);
-                }
-                catch { }
-                item.Cost = 0;
-                try
-                {
-                    item.Cost = Convert.ToInt32(rowcolumns[7].InnerText);
-                }
-                catch { }
-                try
-                {
-                    item.AttEff = (item.MaxAtk / item.Cost);
-                }
-                catch { item.AttEff = 0; }
-                try
-                {
-                    item.DefEff = (item.MaxDef / item.Cost);
-                }
-                catch { item.DefEff = 0; }
-                try
-                {
-                    item.OverallEff = (item.Total / item.Cost);
-                }
-                catch { item.OverallEff = 0; }
-                item.Skill = "None";
-                try
-                {
-                    item.Skill = Convert.ToString(rowcolumns[11].InnerText).TrimEnd('\r', '\n');
-                }
-                catch { }
-                item.EventSkl1 = "None";
-                try
-                {
-                    item.EventSkl1 = Convert.ToString(rowcolumns[12].InnerText).TrimEnd('\r', '\n');
-                }
-                catch { }
-                item.EventSkl2 = "None";
-                try
-                {
-                    item.EventSkl2 = Convert.ToString(rowcolumns[12].InnerText).TrimEnd('\r', '\n');
-                }
-                catch { }
+                item.Cost = ParseIntFromHtml(rowcolumns[7]);
+                item.AttEff = CalculateAttackEffect(item.MaxAtk, item.Cost);
+                item.DefEff = CalculateDefenseEffect(item.MaxDef, item.Cost);
+                item.OverallEff = CalculateOverallEffect(item.Total, item.Cost);
+                item.Skill = ParseStringFromHtml(rowcolumns[11]);
+                item.EventSkl1 = ParseStringFromHtml(rowcolumns[12]);
+                item.EventSkl2 = ParseStringFromHtml(rowcolumns[12]);
                 table.TableData.Add(item);
             }
             return table;
+        }
+
+        private static int CalculateAttackEffect(int maxAtk, int cost)
+        {
+            if (cost != 0)
+            {
+                return (maxAtk / cost);
+            }
+            return 0;
+        }
+
+        private static int CalculateDefenseEffect(int maxDef, int cost)
+        {
+            if (cost != 0)
+            {
+                return (maxDef / cost);
+            }
+            return 0;
+        }
+
+        private static int CalculateOverallEffect(int total, int cost)
+        {
+            if (cost != 0)
+            {
+                return (total / cost);
+            }
+            return 0;
+        }
+
+        private static int ParseIntFromHtml(HtmlNode htmlNode)
+        {
+            int result = 0;
+            try
+            {
+                result = Convert.ToInt32(htmlNode.InnerText);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Unable to parse the value.");
+            }
+            return result;
+        }
+
+        private static string ParseStringFromHtml(HtmlNode htmlNode)
+        {
+            string result = "";
+            try
+            {
+                result = Convert.ToString(htmlNode.InnerText).Trim('\r', '\n');
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Unable to parse the value.");
+            }
+            return result;
         }
 
         private static ERarity ParseRarity(HtmlNode rowcolumn)
