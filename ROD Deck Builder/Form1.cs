@@ -35,10 +35,21 @@ namespace ROD_Deck_Builder
             //(new System.Collections.Generic.Mscorlib_CollectionDebugView<ROD_Deck_Builder.Card>(newpage.TableData)).Items[0].Name;    
                 listBox1.DisplayMember = "Faction";
                 listBox1.DataSource = (newpage.TableData.Select(x => x.Faction).ToList());
+                listBox1.SelectionMode = SelectionMode.MultiExtended;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cardBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
