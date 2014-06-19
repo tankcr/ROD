@@ -29,13 +29,30 @@ namespace ROD_Deck_Builder
             //List<string> factions = new List<string>();
             //foreach(EFaction efaction in efactions)
             //{ factions.Add(efaction.ToString()); }
-            listBox1.DisplayMember = "Faction";
-            listBox1.DataSource = (newpage.TableData.Select(x => x.Faction).ToList());
-            
-            //(new System.Collections.Generic.Mscorlib_CollectionDebugView<ROD_Deck_Builder.Card>(newpage.TableData)).Items[0].Name;    
-                listBox1.DisplayMember = "Faction";
-                listBox1.DataSource = (newpage.TableData.Select(x => x.Faction).ToList());
-                listBox1.SelectionMode = SelectionMode.MultiExtended;
+
+            List<Card> cardlist = (newpage.TableData.ToList());
+            var orderFactions =
+                from f in cardlist
+                group f by f.Faction into fg
+                select new { Faction = fg.Key, factions = fg };
+            var orderRealms =
+                from r in cardlist
+                group r by r.Realm into rg
+                select new { Realm = rg.Key, realms = rg };
+            var orderRarity =
+                from cr in cardlist
+                group cr by cr.Rarity into crg
+                select new { Rarity = crg.Key, rarity = crg };
+ 
+            listBox1.DisplayMember = "Realm";
+            listBox1.DataSource = orderRealms.ToList();
+            listBox1.SelectionMode = SelectionMode.MultiExtended;
+            listBox2.DisplayMember = "Faction";
+            listBox2.DataSource = orderFactions.ToList();
+            listBox2.SelectionMode = SelectionMode.MultiExtended;
+            listBox3.DisplayMember = "Rarity";
+            listBox3.DataSource = orderRarity.ToList();
+            listBox3.SelectionMode = SelectionMode.MultiExtended;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,6 +65,11 @@ namespace ROD_Deck_Builder
         }
 
         private void cardBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
