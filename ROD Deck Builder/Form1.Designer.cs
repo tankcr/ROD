@@ -39,6 +39,7 @@
             this.dataColumn3 = new System.Data.DataColumn();
             this.dataColumn4 = new System.Data.DataColumn();
             this.dataColumn5 = new System.Data.DataColumn();
+            this.dataColumn6 = new System.Data.DataColumn();
             this.cardBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,16 +66,15 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.cardtableDataset, "CardListTable.Name", true));
             this.dataGridView1.Location = new System.Drawing.Point(134, 165);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(522, 203);
+            this.dataGridView1.Size = new System.Drawing.Size(655, 203);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.cardtableDataset = new System.Data.DataSet();
             // 
-            // dataSet1
+            // cardtableDataset
             // 
             this.cardtableDataset.DataSetName = "NewDataSet";
             this.cardtableDataset.Tables.AddRange(new System.Data.DataTable[] {
@@ -80,40 +82,44 @@
             // 
             // cardTable
             // 
-            this.cardTable = new System.Data.DataTable();
             this.cardTable.Columns.AddRange(new System.Data.DataColumn[] {
             this.Name,
             this.dataColumn2,
             this.dataColumn3,
             this.dataColumn4,
-            this.dataColumn5});
+            this.dataColumn5,
+            this.dataColumn6});
             this.cardTable.TableName = "CardListTable";
             // 
-            // dataColumn1
+            // Name
             // 
-            this.Name.ColumnName = "Name";
+            this.Name.ColumnName = "Rarity";
             // 
             // dataColumn2
             // 
-            this.dataColumn2.ColumnName = "Artist";
+            this.dataColumn2.ColumnName = "Name";
             // 
             // dataColumn3
             // 
-            this.dataColumn3.ColumnName = "Album";
+            this.dataColumn3.ColumnName = "Realm";
             // 
             // dataColumn4
             // 
-            this.dataColumn4.ColumnName = "Genre";
+            this.dataColumn4.ColumnName = "Faction";
             // 
             // dataColumn5
             // 
-            this.dataColumn5.ColumnName = "FileLocation";
+            this.dataColumn5.ColumnName = "MATK";
+            // 
+            // dataColumn6
+            // 
+            this.dataColumn6.ColumnName = "MDEF";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ROD_Deck_Builder.Properties.Resources.ROD;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(231, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(304, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(270, 156);
             this.pictureBox1.TabIndex = 2;
@@ -166,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 390);
+            this.ClientSize = new System.Drawing.Size(801, 390);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.label2);
@@ -175,10 +181,13 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.listBox1);
+            //this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -196,6 +205,7 @@
         private System.Data.DataColumn dataColumn3;
         private System.Data.DataColumn dataColumn4;
         private System.Data.DataColumn dataColumn5;
+        private System.Data.DataColumn dataColumn6;
         private System.Windows.Forms.BindingSource cardBindingSource;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;

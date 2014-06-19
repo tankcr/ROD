@@ -57,18 +57,23 @@ namespace ROD_Deck_Builder
             listBox3.DataSource = orderRarity.ToList();
             listBox3.SelectionMode = SelectionMode.MultiExtended;
             listBox3.SelectedItem = null;
-            dataGridView1.DataSource = cardlist;
-            DataTable cardtable;
             DataSet cardtableDataset = new DataSet();
             int numCards = cardlist.Count;
-            for (int currCardIndex =1; currCardIndex <= numCards; currCardIndex++)
+            for (int currCardIndex =0; currCardIndex < numCards; currCardIndex++)
             {
-                cardtable = this.cardtableDataset.Tables[0];
                 DataRow drnew = cardTable.NewRow();
                 Card currCard = cardlist[currCardIndex];
+                drnew["Rarity"] = currCard.Rarity;
                 drnew["Name"] = currCard.Name;
+                drnew["Realm"] = currCard.Realm;
+                drnew["Faction"] = currCard.Faction;
+                drnew["MATK"] = currCard.MaxAtk;
+                try { drnew["MDEF"] = currCard.MaxDef; }
+                catch { drnew["MDEF"] = "missing"; }
+                cardTable.Rows.Add(drnew);
             }
-            
+
+            dataGridView1.DataSource = cardTable;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
