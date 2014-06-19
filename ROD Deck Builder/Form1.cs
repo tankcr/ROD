@@ -17,7 +17,7 @@ namespace ROD_Deck_Builder
         {
             InitializeComponent();
             Cards newpage = GetPage.GetPageData("http://reignofdragons.wikia.com/wiki/Category:All_Cards");
-            
+            //dataTable1.Rows.Clear();
             //Cards currentPageData = GetTable.GetTableData(newpage);
 //            HtmlAgilityPack.HtmlDocument webdoc = new HtmlAgilityPack.HtmlDocument();
 //            webdoc.LoadHtml("http://reignofdragons.wikia.com/wiki/All");
@@ -47,12 +47,28 @@ namespace ROD_Deck_Builder
             listBox1.DisplayMember = "Realm";
             listBox1.DataSource = orderRealms.ToList();
             listBox1.SelectionMode = SelectionMode.MultiExtended;
+            listBox1.SelectedItem = null;
+            if (listBox1.SelectedItems.Count == 0) { }
             listBox2.DisplayMember = "Faction";
             listBox2.DataSource = orderFactions.ToList();
             listBox2.SelectionMode = SelectionMode.MultiExtended;
+            listBox2.SelectedItem = null;
             listBox3.DisplayMember = "Rarity";
             listBox3.DataSource = orderRarity.ToList();
             listBox3.SelectionMode = SelectionMode.MultiExtended;
+            listBox3.SelectedItem = null;
+            dataGridView1.DataSource = cardlist;
+            DataTable cardtable;
+            DataSet cardtableDataset = new DataSet();
+            int numCards = cardlist.Count;
+            for (int currCardIndex =1; currCardIndex <= numCards; currCardIndex++)
+            {
+                cardtable = this.cardtableDataset.Tables[0];
+                DataRow drnew = cardTable.NewRow();
+                Card currCard = cardlist[currCardIndex];
+                drnew["Name"] = currCard.Name;
+            }
+            
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,7 +87,7 @@ namespace ROD_Deck_Builder
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

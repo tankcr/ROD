@@ -32,16 +32,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cardtableDataset = new System.Data.DataSet();
+            this.cardTable = new System.Data.DataTable();
+            this.Name = new System.Data.DataColumn();
+            this.dataColumn2 = new System.Data.DataColumn();
+            this.dataColumn3 = new System.Data.DataColumn();
+            this.dataColumn4 = new System.Data.DataColumn();
+            this.dataColumn5 = new System.Data.DataColumn();
+            this.cardBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
-            this.cardBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -58,13 +65,49 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.cardBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(134, 165);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(522, 203);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.cardtableDataset = new System.Data.DataSet();
+            // 
+            // dataSet1
+            // 
+            this.cardtableDataset.DataSetName = "NewDataSet";
+            this.cardtableDataset.Tables.AddRange(new System.Data.DataTable[] {
+            this.cardTable});
+            // 
+            // cardTable
+            // 
+            this.cardTable = new System.Data.DataTable();
+            this.cardTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.Name,
+            this.dataColumn2,
+            this.dataColumn3,
+            this.dataColumn4,
+            this.dataColumn5});
+            this.cardTable.TableName = "CardListTable";
+            // 
+            // dataColumn1
+            // 
+            this.Name.ColumnName = "Name";
+            // 
+            // dataColumn2
+            // 
+            this.dataColumn2.ColumnName = "Artist";
+            // 
+            // dataColumn3
+            // 
+            this.dataColumn3.ColumnName = "Album";
+            // 
+            // dataColumn4
+            // 
+            this.dataColumn4.ColumnName = "Genre";
+            // 
+            // dataColumn5
+            // 
+            this.dataColumn5.ColumnName = "FileLocation";
             // 
             // pictureBox1
             // 
@@ -110,11 +153,6 @@
             this.listBox3.Size = new System.Drawing.Size(101, 95);
             this.listBox3.TabIndex = 6;
             // 
-            // cardBindingSource
-            // 
-            this.cardBindingSource.DataSource = typeof(ROD_Deck_Builder.Card);
-            this.cardBindingSource.CurrentChanged += new System.EventHandler(this.cardBindingSource_CurrentChanged);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -137,12 +175,11 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.listBox1);
-            this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,6 +189,13 @@
 
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Data.DataSet cardtableDataset;
+        private System.Data.DataTable cardTable;
+        private System.Data.DataColumn Name;
+        private System.Data.DataColumn dataColumn2;
+        private System.Data.DataColumn dataColumn3;
+        private System.Data.DataColumn dataColumn4;
+        private System.Data.DataColumn dataColumn5;
         private System.Windows.Forms.BindingSource cardBindingSource;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
