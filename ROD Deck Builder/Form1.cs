@@ -82,11 +82,17 @@ namespace ROD_Deck_Builder
             cardTable.Rows.Clear();
             ListBox.SelectedObjectCollection selecteditems = listBox1.SelectedItems;
             List<object> selectedrealms = new List<object>();
+            List<ERealm> myrealms = new List<ERealm>();
             foreach (object selecteditem in selecteditems)
-            { selectedrealms.Add(selecteditem); }
+            { 
+                string item = selecteditem.ToString();
+                //ERealm currRealm = ERealm.item;
+            
+            }
             
             //listBox1.Select(x => x.ToString());
-            List<Card> cardlist = (newpage.TableData.ToList());
+            
+            //List<Card> cardlist = (newpage.TableData.ToList())|while(ERealm = selectedrealms);
             
             
         }

@@ -77,7 +77,7 @@ namespace ROD_Deck_Builder
                 item.OverallEff = CalculateOverallEffect(item.Total, item.Cost);
                 item.Skill = ParseStringFromHtml(rowcolumns[11]);
                 item.EventSkl1 = ParseStringFromHtml(rowcolumns[12]);
-                item.EventSkl2 = ParseStringFromHtml(rowcolumns[12]);
+                item.EventSkl2 = ParseStringFromHtml(rowcolumns[13]);
                 table.TableData.Add(item);
             }
             return table;
