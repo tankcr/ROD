@@ -13,10 +13,12 @@ namespace ROD_Deck_Builder
 {
     public partial class Form1 : Form
     {
+        Cards newpage = GetPage.GetPageData("http://reignofdragons.wikia.com/wiki/Category:All_Cards");
         public Form1()
         {
+            
             InitializeComponent();
-            Cards newpage = GetPage.GetPageData("http://reignofdragons.wikia.com/wiki/Category:All_Cards");
+            List<Card> cardlist = (newpage.TableData.ToList());
             //dataTable1.Rows.Clear();
             //Cards currentPageData = GetTable.GetTableData(newpage);
 //            HtmlAgilityPack.HtmlDocument webdoc = new HtmlAgilityPack.HtmlDocument();
@@ -29,8 +31,6 @@ namespace ROD_Deck_Builder
             //List<string> factions = new List<string>();
             //foreach(EFaction efaction in efactions)
             //{ factions.Add(efaction.ToString()); }
-
-            List<Card> cardlist = (newpage.TableData.ToList());
             var orderFactions =
                 from f in cardlist
                 group f by f.Faction into fg
@@ -57,7 +57,7 @@ namespace ROD_Deck_Builder
             listBox3.DataSource = orderRarity.ToList();
             listBox3.SelectionMode = SelectionMode.MultiExtended;
             listBox3.SelectedItem = null;
-            DataSet cardtableDataset = new DataSet();
+            //DataSet cardtableDataset = new DataSet();
             int numCards = cardlist.Count;
             for (int currCardIndex =0; currCardIndex < numCards; currCardIndex++)
             {
@@ -78,6 +78,16 @@ namespace ROD_Deck_Builder
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+            cardTable.Rows.Clear();
+            ListBox.SelectedObjectCollection selecteditems = listBox1.SelectedItems;
+            List<string> selectedrealms = new List<string>();
+            foreach (string selecteditem in selecteditems)
+            { selectedrealms.Add(selecteditem); }
+            
+            //listBox1.Select(x => x.ToString());
+            List<Card> cardlist = (newpage.TableData.ToList());
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
