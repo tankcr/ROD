@@ -81,12 +81,13 @@ namespace ROD_Deck_Builder
             
             cardTable.Rows.Clear();
             ListBox.SelectedObjectCollection selecteditems = listBox1.SelectedItems;
-            List<string> selectedrealms = new List<string>();
-            foreach (string selecteditem in selecteditems)
+            List<object> selectedrealms = new List<object>();
+            foreach (object selecteditem in selecteditems)
             { selectedrealms.Add(selecteditem); }
             
             //listBox1.Select(x => x.ToString());
             List<Card> cardlist = (newpage.TableData.ToList());
+            
             
         }
 
