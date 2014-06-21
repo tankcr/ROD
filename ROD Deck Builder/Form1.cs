@@ -86,15 +86,37 @@ namespace ROD_Deck_Builder
             foreach (object selecteditem in selecteditems)
             { 
                 string item = selecteditem.ToString();
-                //ERealm currRealm = ERealm.item;
-            
+                selectedrealms.Add(item);
+                //ERealm currRealm = ERealm.item;           
             }
             
             //listBox1.Select(x => x.ToString());
             
-            //List<Card> cardlist = (newpage.TableData.ToList())|while(ERealm = selectedrealms);
-            
-            
+            List<Card> cardlist = (newpage.TableData.ToList());
+            var orderRealms =
+                from r in selectedrealms
+                group r by r into rg
+                select new { Realm = rg.Key, realms = rg };
+            int numCards = cardlist.Count;
+            for (int currCardIndex = 0; currCardIndex < numCards; currCardIndex++)
+            {
+                
+                DataRow drnew = cardTable.NewRow();
+                Card currCard = cardlist[currCardIndex];
+                if (currCard.Realm == selectedrealms.ToString())
+                {
+                    drnew["Rarity"] = currCard.Rarity;
+                    drnew["Name"] = currCard.Name;
+                    drnew["Realm"] = currCard.Realm;
+                    drnew["Faction"] = currCard.Faction;
+                    drnew["MATK"] = currCard.MaxAtk;
+                    try { drnew["MDEF"] = currCard.MaxDef; }
+                    catch { drnew["MDEF"] = "missing"; }
+                    cardTable.Rows.Add(drnew);
+                }
+            }
+
+                
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
