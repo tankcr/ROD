@@ -13,56 +13,62 @@ namespace ROD_Deck_Builder
 {
     public partial class Form1 : Form
     {
+        // Stores all of the cards
         Cards newpage = GetPage.GetPageData("http://reignofdragons.wikia.com/wiki/Category:All_Cards");
+        // List of all of the currently selected factions
+        List<string> factionSelections = new List<string>(0);
+        // List of all of the currently seleced realms
+        List<string> realmSelections = new List<string>(0);
+        // List of all of the currently selected rarities
+        List<string> raritySelections = new List<string>(0);
+
         public Form1()
         {
-            
+            Array values;
+
             InitializeComponent();
             List<Card> cardlist = (newpage.TableData.ToList());
-            //dataTable1.Rows.Clear();
-            //Cards currentPageData = GetTable.GetTableData(newpage);
-//            HtmlAgilityPack.HtmlDocument webdoc = new HtmlAgilityPack.HtmlDocument();
-//            webdoc.LoadHtml("http://reignofdragons.wikia.com/wiki/All");
-//            //
-//            foreach(HtmlNode table in webdoc.DocumentNode.SelectNodes("//a[@class=]"))
-//            {HtmlNode newpagedata = table;}
-            //Card items = (newpage.TableData).Items[0].Name;
-            //List<ROD_Deck_Builder.EFaction> efactions = (newpage.TableData.Select(x => x.Faction).ToList());
-            //List<string> factions = new List<string>();
-            //foreach(EFaction efaction in efactions)
-            //{ factions.Add(efaction.ToString()); }
-            var orderFactions =
-                from f in cardlist
-                group f by f.Faction into fg
-                select new { Faction = fg.Key, factions = fg };
-            var orderRealms =
-                from r in cardlist
-                group r by r.Realm into rg
-                select new { Realm = rg.Key, realms = rg };
-            var orderRarity =
-                from cr in cardlist
-                group cr by cr.Rarity into crg
-                select new { Rarity = crg.Key, rarity = crg };
- 
-            listBox1.DisplayMember = "Realm";
-            listBox1.DataSource = orderRealms.ToList();
-            listBox1.SelectionMode = SelectionMode.MultiExtended;
-            listBox1.SelectedItem = null;
-            if (listBox1.SelectedItems.Count == 0) { }
-            listBox2.DisplayMember = "Faction";
-            listBox2.DataSource = orderFactions.ToList();
-            listBox2.SelectionMode = SelectionMode.MultiExtended;
-            listBox2.SelectedItem = null;
-            listBox3.DisplayMember = "Rarity";
-            listBox3.DataSource = orderRarity.ToList();
-            listBox3.SelectionMode = SelectionMode.MultiExtended;
-            listBox3.SelectedItem = null;
+
+            lbxRealms.DisplayMember = "Realm";
+            // Add each of the realm values
+            values = System.Enum.GetNames(typeof(ERealm));
+            realmSelections=new List<string>(values.Length);
+            foreach (string realm in values)
+            {
+              lbxRealms.Items.Add(realm);
+              realmSelections.Add(realm);
+            }
+            //listBox1.DataSource = orderRealms.ToList();
+            lbxRealms.SelectionMode = SelectionMode.MultiExtended;
+            lbxRealms.SelectedItem = null;
+            lbxFactions.DisplayMember = "Faction";
+            // Add each of the faction values
+            values = System.Enum.GetNames(typeof(EFaction));
+            factionSelections = new List<string>(values.Length);
+            foreach (string faction in values)
+            {
+              lbxFactions.Items.Add(faction);
+              factionSelections.Add(faction);
+            }
+            //listBox2.DataSource = orderFactions.ToList();
+            lbxFactions.SelectionMode = SelectionMode.MultiExtended;
+            lbxFactions.SelectedItem = null;
+            lbxRarity.DisplayMember = "Rarity";
+            // Add each of the rarity selections
+            values = System.Enum.GetNames(typeof(ERarity));
+            raritySelections = new List<string>(values.Length);
+            foreach (string rarity in values)
+            {
+              lbxRarity.Items.Add(rarity);
+              raritySelections.Add(rarity);
+            }
+            //listBox3.DataSource = orderRarity.ToList();
+            lbxRarity.SelectionMode = SelectionMode.MultiExtended;
+            lbxRarity.SelectedItem = null;
             //DataSet cardtableDataset = new DataSet();
-            int numCards = cardlist.Count;
-            for (int currCardIndex =0; currCardIndex < numCards; currCardIndex++)
+            foreach (Card currCard in cardlist)
             {
                 DataRow drnew = cardTable.NewRow();
-                Card currCard = cardlist[currCardIndex];
                 drnew["Rarity"] = currCard.Rarity;
                 drnew["Name"] = currCard.Name;
                 drnew["Realm"] = currCard.Realm;
@@ -76,62 +82,114 @@ namespace ROD_Deck_Builder
             dataGridView1.DataSource = cardTable;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void lbxRealms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            cardTable.Rows.Clear();
-            ListBox.SelectedObjectCollection selecteditems = listBox1.SelectedItems;
-            List<object> selectedrealms = new List<object>();
-            List<ERealm> myrealms = new List<ERealm>();
+            ListBox.SelectedObjectCollection selecteditems = lbxRealms.SelectedItems;
+            realmSelections = new List<string>(selecteditems.Count);
             foreach (object selecteditem in selecteditems)
             { 
-                string item = selecteditem.ToString();
-                selectedrealms.Add(item);
-                //ERealm currRealm = ERealm.item;           
+                realmSelections.Add((string)selecteditem);
             }
-            
-            //listBox1.Select(x => x.ToString());
-            
-            List<Card> cardlist = (newpage.TableData.ToList());
-            var orderRealms =
-                from r in selectedrealms
-                group r by r into rg
-                select new { Realm = rg.Key, realms = rg };
-            int numCards = cardlist.Count;
-            for (int currCardIndex = 0; currCardIndex < numCards; currCardIndex++)
+            UpdateGrid();
+        }
+
+
+        private void lbxFactions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          // Faction
+          ListBox.SelectedObjectCollection selecteditems = lbxFactions.SelectedItems;
+          factionSelections = new List<string>(selecteditems.Count);
+          foreach (object selecteditem in selecteditems)
+          {
+            factionSelections.Add((string)selecteditem);
+          }
+          UpdateGrid();
+        }
+
+
+        private void lbxRarity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          // Rarity
+          ListBox.SelectedObjectCollection selecteditems = lbxRarity.SelectedItems;
+          if (selecteditems.Count == 0)
+          {
+            Array values = System.Enum.GetNames(typeof(ERarity));
+            raritySelections = new List<string>(values.Length);
+            foreach (string rarity in values)
             {
-                
-                DataRow drnew = cardTable.NewRow();
-                Card currCard = cardlist[currCardIndex];
-                if (currCard.Realm == selectedrealms.ToString())
-                {
-                    drnew["Rarity"] = currCard.Rarity;
-                    drnew["Name"] = currCard.Name;
-                    drnew["Realm"] = currCard.Realm;
-                    drnew["Faction"] = currCard.Faction;
-                    drnew["MATK"] = currCard.MaxAtk;
-                    try { drnew["MDEF"] = currCard.MaxDef; }
-                    catch { drnew["MDEF"] = "missing"; }
-                    cardTable.Rows.Add(drnew);
-                }
+              raritySelections.Add(rarity);
             }
-
-                
+          }
+          else
+          {
+            raritySelections = new List<string>(selecteditems.Count);
+            foreach (object selecteditem in selecteditems)
+            {
+              raritySelections.Add((string)selecteditem);
+            }
+          }
+          UpdateGrid();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void UpdateGrid()
         {
+            bool cardPassed;
 
-        }
-
-        private void cardBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
+            // use the three sets of selections to determine if the card can be viewed
+            cardTable.Rows.Clear();
+            List<Card> cardlist = (newpage.TableData.ToList());
+            foreach (Card currCard in cardlist)
+            {
+              cardPassed = false;
+              if (realmSelections.Count != 0)
+              {
+                foreach (string realm in realmSelections)
+                {
+                  if (System.Enum.GetName(typeof(ERealm), currCard.Realm).Equals(realm))
+                  {
+                    cardPassed = true;
+                    break;
+                  }
+                }
+                if (!cardPassed) continue;
+              }
+              if (factionSelections.Count != 0)
+              {
+                cardPassed = false;
+                foreach (string faction in factionSelections)
+                {
+                  if (System.Enum.GetName(typeof(EFaction), currCard.Faction).Equals(faction))
+                  {
+                    cardPassed = true;
+                    break;
+                  }
+                }
+                if (!cardPassed) continue;
+              }
+              if (raritySelections.Count != 0)
+              {
+                cardPassed = false;
+                foreach (string rarity in raritySelections)
+                {
+                  if (System.Enum.GetName(typeof(ERarity), currCard.Rarity).Equals(rarity))
+                  {
+                    cardPassed = true;
+                    break;
+                  }
+                }
+                if (!cardPassed) continue;
+              }
+              DataRow drnew = cardTable.NewRow();
+              drnew["Rarity"] = currCard.Rarity;
+              drnew["Name"] = currCard.Name;
+              drnew["Realm"] = currCard.Realm;
+              drnew["Faction"] = currCard.Faction;
+              drnew["MATK"] = currCard.MaxAtk;
+              try { drnew["MDEF"] = currCard.MaxDef; }
+              catch { drnew["MDEF"] = "missing"; }
+              cardTable.Rows.Add(drnew);
+            }
         }
     }
 }

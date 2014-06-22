@@ -117,7 +117,7 @@ namespace ROD_Deck_Builder
             {
                 result = Convert.ToInt32(htmlNode.InnerText);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 System.Diagnostics.Debug.WriteLine("Unable to parse the value.");
             }
@@ -131,7 +131,7 @@ namespace ROD_Deck_Builder
             {
                 result = Convert.ToString(htmlNode.InnerText).Trim('\r', '\n');
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 System.Diagnostics.Debug.WriteLine("Unable to parse the value.");
             }
@@ -166,11 +166,11 @@ namespace ROD_Deck_Builder
             Match match = Regex.Match(realm, @"\w+");
             if (match.Success)
             {
-                if (realm == "C")
+                if (realm.Equals("C"))
                 { crealm = ERealm.Chaos; };
-                if (realm == "G")
+                if (realm.Equals("G"))
                 { crealm = ERealm.Genesis; };
-                if (realm == "J")
+                if (realm.Equals("J"))
                 { crealm = ERealm.Justice; };
             }
             return crealm;
