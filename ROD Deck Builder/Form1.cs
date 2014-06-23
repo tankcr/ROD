@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,13 +18,13 @@ namespace ROD_Deck_Builder
         // Stores all of the Skills
         Skills skills = GetSkills.GetPageData("http://reignofdragons.wikia.com/wiki/Category:Skills");
         // List of all of the currently selected factions
-        List<string> factionSelections = new List<string>(0);
-        // List of all of the currently seleced skills
-        List<string> skillSelections = new List<string>(0);
-        // List of all of the currently seleced realms
-        List<string> realmSelections = new List<string>(0);
+        List<string> factionSelections = new List<string>();
+        // List of all of the currently selected skills
+        List<string> skillSelections = new List<string>();
+        // List of all of the currently selected realms
+        List<string> realmSelections = new List<string>();
         // List of all of the currently selected rarities
-        List<string> raritySelections = new List<string>(0);
+        List<string> raritySelections = new List<string>();
 
         public Form1()
         {
@@ -36,11 +36,11 @@ namespace ROD_Deck_Builder
             lbxRealms.DisplayMember = "Realm";
             // Add each of the realm values
             values = System.Enum.GetNames(typeof(ERealm));
-            realmSelections=new List<string>(values.Length);
+            realmSelections = new List<string>(values.Length);
             foreach (string realm in values)
             {
-              lbxRealms.Items.Add(realm);
-              realmSelections.Add(realm);
+                lbxRealms.Items.Add(realm);
+                realmSelections.Add(realm);
             }
             //listBox1.DataSource = orderRealms.ToList();
             lbxRealms.SelectionMode = SelectionMode.MultiExtended;
@@ -51,8 +51,8 @@ namespace ROD_Deck_Builder
             factionSelections = new List<string>(values.Length);
             foreach (string faction in values)
             {
-              lbxFactions.Items.Add(faction);
-              factionSelections.Add(faction);
+                lbxFactions.Items.Add(faction);
+                factionSelections.Add(faction);
             }
             //listBox2.DataSource = orderFactions.ToList();
             lbxFactions.SelectionMode = SelectionMode.MultiExtended;
@@ -80,33 +80,40 @@ namespace ROD_Deck_Builder
             raritySelections = new List<string>(values.Length);
             foreach (string rarity in values)
             {
-              lbxRarity.Items.Add(rarity);
-              raritySelections.Add(rarity);
+                lbxRarity.Items.Add(rarity);
+                raritySelections.Add(rarity);
             }
             //listBox3.DataSource = orderRarity.ToList();
             lbxRarity.SelectionMode = SelectionMode.MultiExtended;
             lbxRarity.SelectedItem = null;
             //DataSet cardtableDataset = new DataSet();
+
             foreach (Card currCard in cardlist)
             {
-                DataRow drnew = cardTable.NewRow();
-                drnew["Rarity"] = currCard.Rarity;
-                drnew["Name"] = currCard.Name;
-                drnew["Realm"] = currCard.Realm;
-                drnew["Faction"] = currCard.Faction;
-                drnew["MATK"] = currCard.MaxAtk;
-                try { drnew["MDEF"] = currCard.MaxDef; }
-                catch { drnew["MDEF"] = "missing"; }
-                drnew["Total"] = currCard.Total;
-                drnew["Cost"] = currCard.Cost;
-                drnew["AttEff"] = currCard.AttEff;
-                drnew["DefEff"] = currCard.DefEff;
-                drnew["OverallEff"] = currCard.OverallEff;
-                drnew["Skill"] = currCard.Skill;
-                cardTable.Rows.Add(drnew);
+                AddCardsToCardtable(ref cardTable, cardlist);
             }
 
             dataGridView1.DataSource = cardTable;
+        }
+
+
+        private void AddCardsToCardtable(ref System.Data.DataTable dataTable, List<Card> cardlist)
+        {
+            DataRow drnew = dataTable.NewRow();
+            drnew["Rarity"] = currCard.Rarity;
+            drnew["Name"] = currCard.Name;
+            drnew["Realm"] = currCard.Realm;
+            drnew["Faction"] = currCard.Faction;
+            drnew["MATK"] = currCard.MaxAtk;
+            try { drnew["MDEF"] = currCard.MaxDef; }
+            catch { drnew["MDEF"] = "missing"; }
+            drnew["Total"] = currCard.Total;
+            drnew["Cost"] = currCard.Cost;
+            drnew["AttEff"] = currCard.AttEff;
+            drnew["DefEff"] = currCard.DefEff;
+            drnew["OverallEff"] = currCard.OverallEff;
+            drnew["Skill"] = currCard.Skill;
+            dataTable.Rows.Add(drnew);
         }
 
 
@@ -114,9 +121,9 @@ namespace ROD_Deck_Builder
         {
             ListBox.SelectedObjectCollection selecteditems = lbxRealms.SelectedItems;
             realmSelections = new List<string>(selecteditems.Count);
-            foreach (object selecteditem in selecteditems)
-            { 
-                realmSelections.Add((string)selecteditem);
+            foreach (string selecteditem in selecteditems)
+            {
+                realmSelections.Add(selecteditem);
             }
             UpdateGrid();
         }
@@ -124,14 +131,14 @@ namespace ROD_Deck_Builder
 
         private void lbxFactions_SelectedIndexChanged(object sender, EventArgs e)
         {
-          // Faction
-          ListBox.SelectedObjectCollection selecteditems = lbxFactions.SelectedItems;
-          factionSelections = new List<string>(selecteditems.Count);
-          foreach (object selecteditem in selecteditems)
-          {
-            factionSelections.Add((string)selecteditem);
-          }
-          UpdateGrid();
+            // Faction
+            ListBox.SelectedObjectCollection selecteditems = lbxFactions.SelectedItems;
+            factionSelections = new List<string>(selecteditems.Count);
+            foreach (string selecteditem in selecteditems)
+            {
+                factionSelections.Add(selecteditem);
+            }
+            UpdateGrid();
         }
 
 
@@ -140,9 +147,9 @@ namespace ROD_Deck_Builder
             // Faction
             ListBox.SelectedObjectCollection selecteditems = lbxSkills.SelectedItems;
             skillSelections = new List<string>(selecteditems.Count);
-            foreach (object selecteditem in selecteditems)
+            foreach (string selecteditem in selecteditems)
             {
-                skillSelections.Add((string)selecteditem);
+                skillSelections.Add(selecteditem);
             }
             UpdateGrid();
         }
@@ -152,26 +159,26 @@ namespace ROD_Deck_Builder
 
         private void lbxRarity_SelectedIndexChanged(object sender, EventArgs e)
         {
-          // Rarity
-          ListBox.SelectedObjectCollection selecteditems = lbxRarity.SelectedItems;
-          if (selecteditems.Count == 0)
-          {
-            Array values = System.Enum.GetNames(typeof(ERarity));
-            raritySelections = new List<string>(values.Length);
-            foreach (string rarity in values)
+            // Rarity
+            ListBox.SelectedObjectCollection selecteditems = lbxRarity.SelectedItems;
+            if (selecteditems.Count == 0)
             {
-              raritySelections.Add(rarity);
+                Array values = System.Enum.GetNames(typeof(ERarity));
+                raritySelections = new List<string>(values.Length);
+                foreach (string rarity in values)
+                {
+                    raritySelections.Add(rarity);
+                }
             }
-          }
-          else
-          {
-            raritySelections = new List<string>(selecteditems.Count);
-            foreach (object selecteditem in selecteditems)
+            else
             {
-              raritySelections.Add((string)selecteditem);
+                raritySelections = new List<string>(selecteditems.Count);
+                foreach (object selecteditem in selecteditems)
+                {
+                    raritySelections.Add((string)selecteditem);
+                }
             }
-          }
-          UpdateGrid();
+            UpdateGrid();
         }
 
         private void UpdateGrid()
@@ -183,77 +190,19 @@ namespace ROD_Deck_Builder
             List<Card> cardlist = (newpage.TableData.ToList());
             foreach (Card currCard in cardlist)
             {
-              cardPassed = false;
-              if (realmSelections.Count != 0)
-              {
-                foreach (string realm in realmSelections)
-                {
-                  if (System.Enum.GetName(typeof(ERealm), currCard.Realm).Equals(realm))
-                  {
-                    cardPassed = true;
-                    break;
-                  }
-                }
-                if (!cardPassed) continue;
-              }
-              if (factionSelections.Count != 0)
-              {
-                cardPassed = false;
-                foreach (string faction in factionSelections)
-                {
-                  if (System.Enum.GetName(typeof(EFaction), currCard.Faction).Equals(faction))
-                  {
-                    cardPassed = true;
-                    break;
-                  }
-                }
-                if (!cardPassed) continue;
-              }
+                if (realmSelections.Count != 0 && !realmSelections.Contains(currCard.Realm.ToString()))
+                    continue;
 
+                else if (factionSelections.Count != 0 && !factionSelections.Contains(currCard.Faction.ToString()))
+                    continue;
 
-              if (skillSelections.Count != 0)
-              {
-                  cardPassed = false;
-                  foreach (string skill in skillSelections)
-                  {
-                      if (skillSelections.Contains(currCard.Skill.ToString()))
-                      {
-                          cardPassed = true;
-                          break;
-                      }
-                  }
-                  if (!cardPassed) continue;
-              }
+                else if (skillSelections.Count != 0 && !skillSelections.Contains(currCard.Skill.ToString()))
+                    continue;
 
+                else if (raritySelections.Count != 0 && !raritySelections.Contains(currCard.Rarity.ToString()))
+                    continue;
 
-              if (raritySelections.Count != 0)
-              {
-                cardPassed = false;
-                foreach (string rarity in raritySelections)
-                {
-                  if (System.Enum.GetName(typeof(ERarity), currCard.Rarity).Equals(rarity))
-                  {
-                    cardPassed = true;
-                    break;
-                  }
-                }
-                if (!cardPassed) continue;
-              }
-              DataRow drnew = cardTable.NewRow();
-              drnew["Rarity"] = currCard.Rarity;
-              drnew["Name"] = currCard.Name;
-              drnew["Realm"] = currCard.Realm;
-              drnew["Faction"] = currCard.Faction;
-              drnew["MATK"] = currCard.MaxAtk;
-              try { drnew["MDEF"] = currCard.MaxDef; }
-              catch { drnew["MDEF"] = "missing"; }
-              drnew["Total"] = currCard.Total;
-              drnew["Cost"] = currCard.Cost;
-              drnew["AttEff"] = currCard.AttEff;
-              drnew["DefEff"] = currCard.DefEff;
-              drnew["OverallEff"] = currCard.OverallEff;
-              drnew["Skill"] = currCard.Skill;
-              cardTable.Rows.Add(drnew);
+                AddCardsToCardtable(ref cardTable, cardlist);
             }
         }
 
