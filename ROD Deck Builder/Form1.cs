@@ -212,5 +212,14 @@ namespace ROD_Deck_Builder
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowindex = dataGridView1.CurrentRow.Index;
+            DataView currtable = new DataView(cardTable);
+            string selectName = currtable[rowindex]["Name"].ToString();
+            Images imgurl = GetImages.GetPageData("http://reignofdragons.wikia.com/wiki/"+selectName);
+            pictureBox2.Load("http://img3.wikia.nocookie.net/__cb20130204210243/reignofdragons/images/thumb/f/f0/Battlemage_Elf_1.png/180px-Battlemage_Elf_1.png");
+        }
     }
 }

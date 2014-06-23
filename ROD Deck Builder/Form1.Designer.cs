@@ -62,6 +62,7 @@
             this.lbxSkills = new System.Windows.Forms.ListBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardTable)).BeginInit();
@@ -72,6 +73,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).BeginInit();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // lbxRealms
@@ -96,6 +98,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(639, 230);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // cardtableDataset
             // 
@@ -213,7 +216,7 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = global::ROD_Deck_Builder.Properties.Resources.ROD;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(316, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(123, 23);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(270, 156);
             this.pictureBox1.TabIndex = 2;
@@ -323,12 +326,21 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Skills";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(670, 23);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(119, 154);
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(801, 437);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.lbxSkills);
             this.Controls.Add(this.panel6);
@@ -358,6 +370,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -396,6 +409,7 @@
         private System.Windows.Forms.ListBox lbxSkills;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
