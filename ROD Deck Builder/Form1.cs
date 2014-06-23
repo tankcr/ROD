@@ -90,14 +90,14 @@ namespace ROD_Deck_Builder
 
             foreach (Card currCard in cardlist)
             {
-                AddCardsToCardtable(ref cardTable, cardlist);
+                AddCardsToCardtable(ref cardTable, currCard);
             }
 
             dataGridView1.DataSource = cardTable;
         }
 
 
-        private void AddCardsToCardtable(ref System.Data.DataTable dataTable, List<Card> cardlist)
+        private void AddCardsToCardtable(ref System.Data.DataTable dataTable, Card currCard)
         {
             DataRow drnew = dataTable.NewRow();
             drnew["Rarity"] = currCard.Rarity;
@@ -181,6 +181,7 @@ namespace ROD_Deck_Builder
             UpdateGrid();
         }
 
+
         private void UpdateGrid()
         {
             bool cardPassed;
@@ -202,9 +203,10 @@ namespace ROD_Deck_Builder
                 else if (raritySelections.Count != 0 && !raritySelections.Contains(currCard.Rarity.ToString()))
                     continue;
 
-                AddCardsToCardtable(ref cardTable, cardlist);
+                AddCardsToCardtable(ref cardTable, currCard);
             }
         }
+
 
         private void label4_Click(object sender, EventArgs e)
         {
