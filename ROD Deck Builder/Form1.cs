@@ -61,11 +61,9 @@ namespace ROD_Deck_Builder
 
             lbxSkills.DisplayMember = "Skills";
             // Add each of the faction values
-            GetSkills skills = new GetSkills();
-            
             //values = Skill(typeof(Skill));
             skillSelections = new List<string>(values.Length);
-            foreach (string skill in values)
+            foreach (Skill skill in skills)
             {
                 lbxSkills.Items.Add(skill);
                 skillSelections.Add(skill);

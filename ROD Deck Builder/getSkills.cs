@@ -50,7 +50,7 @@ namespace ROD_Deck_Builder
             mydoc.LoadHtml(page);
 
             // Grab the name of each column from the table headers
-            HtmlNode htmltable = mydoc.DocumentNode.SelectSingleNode("//table[@class='article-table']");
+            HtmlNode htmltable = mydoc.DocumentNode.SelectSingleNode("(//table[@class='article-table'])[2]");
             HtmlNodeCollection tableHeaders = htmltable.SelectNodes("tr[th]/th");
             foreach (HtmlNode header in tableHeaders)
             {
@@ -63,8 +63,9 @@ namespace ROD_Deck_Builder
                 Skill item = new Skill();
 
                 HtmlNodeCollection rowcolumns = row.SelectNodes("td");
-                item.SkillName = ParseStringFromHtml(rowcolumns[1]);
-                item.Effect = ParseStringFromHtml(rowcolumns[2]);
+                item.SkillName = ParseStringFromHtml(rowcolumns[0]);
+                item.Effect = ParseStringFromHtml(rowcolumns[1]);
+                table.TableData.Add(item);
             }
             return table;
         }
