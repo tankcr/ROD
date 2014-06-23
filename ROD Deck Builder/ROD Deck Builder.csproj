@@ -89,6 +89,24 @@
   <ItemGroup>
     <None Include="Resources\ROD.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\footer_button_01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\footer_button_sm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\footer_button_sm1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\form top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\form top1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\form bottom.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

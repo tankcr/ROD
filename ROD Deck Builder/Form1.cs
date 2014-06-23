@@ -17,6 +17,8 @@ namespace ROD_Deck_Builder
         Cards newpage = GetPage.GetPageData("http://reignofdragons.wikia.com/wiki/Category:All_Cards");
         // List of all of the currently selected factions
         List<string> factionSelections = new List<string>(0);
+        // List of all of the currently seleced skills
+        List<string> skillSelections = new List<string>(0);
         // List of all of the currently seleced realms
         List<string> realmSelections = new List<string>(0);
         // List of all of the currently selected rarities
@@ -53,6 +55,23 @@ namespace ROD_Deck_Builder
             //listBox2.DataSource = orderFactions.ToList();
             lbxFactions.SelectionMode = SelectionMode.MultiExtended;
             lbxFactions.SelectedItem = null;
+
+
+            lbxSkills.DisplayMember = "Skills";
+            // Add each of the faction values
+            values = System.Enum.GetNames(typeof(Card));
+            skillSelections = new List<string>(values.Length);
+            foreach (string skill in values)
+            {
+                lbxSkills.Items.Add(skill);
+                skillSelections.Add(skill);
+            }
+            //listBox2.DataSource = orderFactions.ToList();
+            lbxSkills.SelectionMode = SelectionMode.MultiExtended;
+            lbxSkills.SelectedItem = null;
+
+
+
             lbxRarity.DisplayMember = "Rarity";
             // Add each of the rarity selections
             values = System.Enum.GetNames(typeof(ERarity));
@@ -76,6 +95,12 @@ namespace ROD_Deck_Builder
                 drnew["MATK"] = currCard.MaxAtk;
                 try { drnew["MDEF"] = currCard.MaxDef; }
                 catch { drnew["MDEF"] = "missing"; }
+                drnew["Total"] = currCard.Total;
+                drnew["Cost"] = currCard.Cost;
+                drnew["AttEff"] = currCard.AttEff;
+                drnew["DefEff"] = currCard.DefEff;
+                drnew["OverallEff"] = currCard.OverallEff;
+                drnew["Skill"] = currCard.Skill;
                 cardTable.Rows.Add(drnew);
             }
 
@@ -106,6 +131,21 @@ namespace ROD_Deck_Builder
           }
           UpdateGrid();
         }
+
+
+        private void lbxSkills_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Faction
+            ListBox.SelectedObjectCollection selecteditems = lbxSkills.SelectedItems;
+            skillSelections = new List<string>(selecteditems.Count);
+            foreach (object selecteditem in selecteditems)
+            {
+                skillSelections.Add((string)selecteditem);
+            }
+            UpdateGrid();
+        }
+
+
 
 
         private void lbxRarity_SelectedIndexChanged(object sender, EventArgs e)
@@ -167,6 +207,23 @@ namespace ROD_Deck_Builder
                 }
                 if (!cardPassed) continue;
               }
+
+
+              if (skillSelections.Count != 0)
+              {
+                  cardPassed = false;
+                  foreach (string skill in skillSelections)
+                  {
+                      if (System.Enum.GetName(typeof(Card), currCard.Skill).Equals(skill))
+                      {
+                          cardPassed = true;
+                          break;
+                      }
+                  }
+                  if (!cardPassed) continue;
+              }
+
+
               if (raritySelections.Count != 0)
               {
                 cardPassed = false;
@@ -188,8 +245,19 @@ namespace ROD_Deck_Builder
               drnew["MATK"] = currCard.MaxAtk;
               try { drnew["MDEF"] = currCard.MaxDef; }
               catch { drnew["MDEF"] = "missing"; }
+              drnew["Total"] = currCard.Total;
+              drnew["Cost"] = currCard.Cost;
+              drnew["AttEff"] = currCard.AttEff;
+              drnew["DefEff"] = currCard.DefEff;
+              drnew["OverallEff"] = currCard.OverallEff;
+              drnew["Skill"] = currCard.Skill;
               cardTable.Rows.Add(drnew);
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
