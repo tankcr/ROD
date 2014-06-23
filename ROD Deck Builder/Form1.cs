@@ -139,10 +139,10 @@ namespace ROD_Deck_Builder
         {
             // Faction
             ListBox.SelectedObjectCollection selecteditems = lbxSkills.SelectedItems;
-            skillSelections = new List<object>(selecteditems.Count);
+            skillSelections = new List<Skill>(selecteditems.Count);
             foreach (object selecteditem in selecteditems)
             {
-                skillSelections.Add((string)selecteditem);
+                skillSelections.Add((Skill)selecteditem);
             }
             UpdateGrid();
         }
@@ -214,7 +214,7 @@ namespace ROD_Deck_Builder
               if (skillSelections.Count != 0)
               {
                   cardPassed = false;
-                  foreach (string skill in skillSelections)
+                  foreach (Skill skill in skillSelections)
                   {
                       if (System.Enum.GetName(typeof(Card), currCard.Skill).Equals(skill))
                       {
