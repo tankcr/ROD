@@ -60,6 +60,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cardBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lbxSkills = new System.Windows.Forms.ListBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardTable)).BeginInit();
@@ -69,6 +71,7 @@
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).BeginInit();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbxRealms
@@ -299,12 +302,34 @@
             this.lbxSkills.TabIndex = 14;
             this.lbxSkills.SelectedIndexChanged += new System.EventHandler(this.lbxSkills_SelectedIndexChanged);
             // 
+            // panel7
+            // 
+            this.panel7.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm1;
+            this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel7.Controls.Add(this.label3);
+            this.panel7.Location = new System.Drawing.Point(15, 319);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(103, 29);
+            this.panel7.TabIndex = 15;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(33, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Skills";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(801, 437);
+            this.Controls.Add(this.panel7);
             this.Controls.Add(this.lbxSkills);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.pictureBox1);
@@ -331,6 +356,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -367,6 +394,8 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.ListBox lbxSkills;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label3;
     }
 }
 

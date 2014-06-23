@@ -20,7 +20,7 @@ namespace ROD_Deck_Builder
         // List of all of the currently selected factions
         List<string> factionSelections = new List<string>(0);
         // List of all of the currently seleced skills
-        List<Skill> skillSelections = new List<Skill>(0);
+        List<string> skillSelections = new List<string>(0);
         // List of all of the currently seleced realms
         List<string> realmSelections = new List<string>(0);
         // List of all of the currently selected rarities
@@ -62,7 +62,7 @@ namespace ROD_Deck_Builder
             lbxSkills.DisplayMember = "Skills";
             // Add each of the faction values
             values = skills.TableData.ToArray();
-            skillSelections = new List<Skill>(values.Length);
+            skillSelections = new List<string>(values.Length);
             foreach (Skill skill in values)
             {
                 lbxSkills.Items.Add(skill.SkillName);
@@ -139,10 +139,10 @@ namespace ROD_Deck_Builder
         {
             // Faction
             ListBox.SelectedObjectCollection selecteditems = lbxSkills.SelectedItems;
-            skillSelections = new List<Skill>(selecteditems.Count);
+            skillSelections = new List<string>(selecteditems.Count);
             foreach (object selecteditem in selecteditems)
             {
-                skillSelections.Add((Skill)selecteditem);
+                skillSelections.Add((string)selecteditem);
             }
             UpdateGrid();
         }
@@ -214,9 +214,9 @@ namespace ROD_Deck_Builder
               if (skillSelections.Count != 0)
               {
                   cardPassed = false;
-                  foreach (Skill skill in skillSelections)
+                  foreach (string skill in skillSelections)
                   {
-                      if (System.Enum.GetName(typeof(Card), currCard.Skill).Equals(skill))
+                      if (skillSelections.Contains(currCard.Skill.ToString()))
                       {
                           cardPassed = true;
                           break;
