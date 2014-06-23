@@ -20,7 +20,7 @@ namespace ROD_Deck_Builder
         // List of all of the currently selected factions
         List<string> factionSelections = new List<string>(0);
         // List of all of the currently seleced skills
-        List<string> skillSelections = new List<string>(0);
+        List<object> skillSelections = new List<object>(0);
         // List of all of the currently seleced realms
         List<string> realmSelections = new List<string>(0);
         // List of all of the currently selected rarities
@@ -61,12 +61,12 @@ namespace ROD_Deck_Builder
 
             lbxSkills.DisplayMember = "Skills";
             // Add each of the faction values
-            //values = Skill(typeof(Skill));
-            skillSelections = new List<string>(values.Length);
-            foreach (Skill skill in skills)
+            values = skills.TableData.ToArray();
+            skillSelections = new List<object>(values.Length);
+            foreach (object skill in values)
             {
-                lbxSkills.Items.Add(skill);
-                skillSelections.Add(skill);
+                lbxSkills.Items.Add(skill.SkillName);
+                skillSelections.Add(skill.SkillName);
             }
             //listBox2.DataSource = orderFactions.ToList();
             lbxSkills.SelectionMode = SelectionMode.MultiExtended;
@@ -139,7 +139,7 @@ namespace ROD_Deck_Builder
         {
             // Faction
             ListBox.SelectedObjectCollection selecteditems = lbxSkills.SelectedItems;
-            skillSelections = new List<string>(selecteditems.Count);
+            skillSelections = new List<object>(selecteditems.Count);
             foreach (object selecteditem in selecteditems)
             {
                 skillSelections.Add((string)selecteditem);
