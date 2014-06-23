@@ -15,6 +15,8 @@ namespace ROD_Deck_Builder
     {
         // Stores all of the cards
         Cards newpage = GetPage.GetPageData("http://reignofdragons.wikia.com/wiki/Category:All_Cards");
+        // Stores all of the Skills
+        Skills skills = GetSkills.GetPageData("http://reignofdragons.wikia.com/wiki/Category:Skills");
         // List of all of the currently selected factions
         List<string> factionSelections = new List<string>(0);
         // List of all of the currently seleced skills
@@ -59,7 +61,9 @@ namespace ROD_Deck_Builder
 
             lbxSkills.DisplayMember = "Skills";
             // Add each of the faction values
-            values = System.Enum.GetNames(typeof(Card));
+            GetSkills skills = new GetSkills();
+            
+            //values = Skill(typeof(Skill));
             skillSelections = new List<string>(values.Length);
             foreach (string skill in values)
             {
