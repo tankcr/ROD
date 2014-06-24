@@ -51,13 +51,7 @@ namespace ROD_Deck_Builder
 
             // Grab the name of each column from the table headers
             HtmlNode htmltable = mydoc.DocumentNode.SelectSingleNode("(//*[@id='mw-content-text'])");
-            HtmlNodeCollection tableHeaders = htmltable.SelectNodes("figure");
-            foreach (HtmlNode header in tableHeaders)
-            {
-                string columnName = header.InnerText.Trim();
-            }
-
-            List<HtmlNode> tableRows = htmltable.SelectNodes("tr").OfType<HtmlNode>().Skip(1).ToList();
+            List<HtmlNode> tableRows = htmltable.SelectNodes("figure").OfType<HtmlNode>().Skip(1).ToList();
             foreach (HtmlNode row in tableRows)
             {
                 Image item = new Image();
