@@ -49,6 +49,11 @@
             this.lbxFactions = new System.Windows.Forms.ListBox();
             this.lbxRarity = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbxSkills = new System.Windows.Forms.ListBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -59,21 +64,18 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cardBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lbxSkills = new System.Windows.Forms.ListBox();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardTable)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).BeginInit();
-            this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // lbxRealms
@@ -96,9 +98,12 @@
             this.dataGridView1.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.cardtableDataset, "CardListTable.Name", true));
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(639, 230);
+            this.dataGridView1.Size = new System.Drawing.Size(639, 215);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // cardtableDataset
             // 
@@ -196,10 +201,58 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(148, 183);
+            this.panel1.Location = new System.Drawing.Point(148, 198);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(641, 233);
+            this.panel1.Size = new System.Drawing.Size(641, 218);
             this.panel1.TabIndex = 8;
+            // 
+            // lbxSkills
+            // 
+            this.lbxSkills.FormattingEnabled = true;
+            this.lbxSkills.Location = new System.Drawing.Point(16, 347);
+            this.lbxSkills.Name = "lbxSkills";
+            this.lbxSkills.Size = new System.Drawing.Size(101, 69);
+            this.lbxSkills.TabIndex = 14;
+            this.lbxSkills.SelectedIndexChanged += new System.EventHandler(this.lbxSkills_SelectedIndexChanged);
+            // 
+            // panel8
+            // 
+            this.panel8.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm2;
+            this.panel8.Controls.Add(this.pictureBox2);
+            this.panel8.Location = new System.Drawing.Point(676, 23);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(125, 169);
+            this.panel8.TabIndex = 17;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 9);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(119, 147);
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            // 
+            // panel7
+            // 
+            this.panel7.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm1;
+            this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel7.Controls.Add(this.label3);
+            this.panel7.Location = new System.Drawing.Point(15, 319);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(103, 29);
+            this.panel7.TabIndex = 15;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(33, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Skills";
             // 
             // panel6
             // 
@@ -296,51 +349,13 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Realms";
             // 
-            // lbxSkills
-            // 
-            this.lbxSkills.FormattingEnabled = true;
-            this.lbxSkills.Location = new System.Drawing.Point(16, 347);
-            this.lbxSkills.Name = "lbxSkills";
-            this.lbxSkills.Size = new System.Drawing.Size(101, 69);
-            this.lbxSkills.TabIndex = 14;
-            this.lbxSkills.SelectedIndexChanged += new System.EventHandler(this.lbxSkills_SelectedIndexChanged);
-            // 
-            // panel7
-            // 
-            this.panel7.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm1;
-            this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel7.Controls.Add(this.label3);
-            this.panel7.Location = new System.Drawing.Point(15, 319);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(103, 29);
-            this.panel7.TabIndex = 15;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(33, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Skills";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(670, 23);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(119, 154);
-            this.pictureBox2.TabIndex = 16;
-            this.pictureBox2.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(801, 437);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.lbxSkills);
             this.Controls.Add(this.panel6);
@@ -360,6 +375,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardTable)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -368,9 +387,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).EndInit();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -410,6 +426,7 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel8;
     }
 }
 

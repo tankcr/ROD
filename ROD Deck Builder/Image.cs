@@ -9,5 +9,7 @@ namespace ROD_Deck_Builder
     public class Image
     {
         public string ImageURL;
+        public int ImageWidth;
+        public int ImageHeight;
     }
 }

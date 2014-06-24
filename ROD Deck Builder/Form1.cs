@@ -218,8 +218,22 @@ namespace ROD_Deck_Builder
             int rowindex = dataGridView1.CurrentRow.Index;
             DataView currtable = new DataView(cardTable);
             string selectName = currtable[rowindex]["Name"].ToString();
-            Images imgurl = GetImages.GetPageData("http://reignofdragons.wikia.com/wiki/"+selectName);
-            pictureBox2.Load(""+imgurl.TableData[0]+"");
+            string selectName2 = (currtable[rowindex]["Name"].ToString()).Replace(" ","_");
+            Images imgurl1 = new Images();
+            Images imgurl2 = new Images();
+            imgurl1 = GetImages.GetPageData("http://reignofdragons.wikia.com/wiki/" + selectName);
+            imgurl2 = GetImages.GetPageData("http://reignofdragons.wikia.com/wiki/" + selectName2);
+
+            //pictureBox2.Height = imgurl.TableData[0].ImageHeight;
+            try
+            {
+                pictureBox2.Load("" + imgurl1.TableData[0].ImageURL + "");
+            }
+            catch
+            {
+                pictureBox2.Load("" + imgurl2.TableData[0].ImageURL + "");
+            }
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }

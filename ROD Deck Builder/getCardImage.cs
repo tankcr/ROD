@@ -50,18 +50,21 @@ namespace ROD_Deck_Builder
             HtmlDocument mydoc = new HtmlDocument();
             mydoc.LoadHtml(page);
 
-            // Grab the name of each column from the table headers
-            HtmlNode htmltable = mydoc.DocumentNode.SelectSingleNode("(//*[@id]/figure)");
-            string htmlurl = htmltable.Attributes[1].Value;
-            List<HtmlNode> tableRows = htmltable.SelectNodes("a").OfType<HtmlNode>().ToList();
-            foreach (HtmlNode row in tableRows)
+            // Grab the url of each image in the table
+            HtmlNodeCollection htmltables = mydoc.DocumentNode.SelectNodes("(//*[@id]/figure/a/img)");
+            foreach (HtmlNode htmltable in htmltables)
             {
                 Image item = new Image();
-
-                HtmlNodeCollection rowcolumns = row.SelectNodes("a");
-                string inner = "None";
-                inner = rowcolumns[0].InnerHtml;
-                item.ImageURL = inner;
+                try
+                {
+                    item.ImageURL = htmltable.Attributes["data-src"].Value;
+                }
+                catch
+                {
+                    item.ImageURL = htmltable.Attributes["src"].Value;
+                }
+                item.ImageHeight = Convert.ToInt32(htmltable.Attributes["height"].Value);
+                item.ImageWidth = Convert.ToInt32(htmltable.Attributes["width"].Value);
                 //item.ImageURL = 
                 table.TableData.Add(item);
             }
