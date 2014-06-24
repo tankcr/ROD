@@ -79,7 +79,7 @@
             // lbxRealms
             // 
             this.lbxRealms.FormattingEnabled = true;
-            this.lbxRealms.Location = new System.Drawing.Point(15, 53);
+            this.lbxRealms.Location = new System.Drawing.Point(15, 51);
             this.lbxRealms.Name = "lbxRealms";
             this.lbxRealms.Size = new System.Drawing.Size(101, 56);
             this.lbxRealms.TabIndex = 0;
@@ -174,7 +174,7 @@
             // lbxFactions
             // 
             this.lbxFactions.FormattingEnabled = true;
-            this.lbxFactions.Location = new System.Drawing.Point(14, 150);
+            this.lbxFactions.Location = new System.Drawing.Point(14, 144);
             this.lbxFactions.Name = "lbxFactions";
             this.lbxFactions.Size = new System.Drawing.Size(103, 56);
             this.lbxFactions.TabIndex = 4;
@@ -183,7 +183,7 @@
             // lbxRarity
             // 
             this.lbxRarity.FormattingEnabled = true;
-            this.lbxRarity.Location = new System.Drawing.Point(15, 247);
+            this.lbxRarity.Location = new System.Drawing.Point(15, 241);
             this.lbxRarity.Name = "lbxRarity";
             this.lbxRarity.Size = new System.Drawing.Size(101, 69);
             this.lbxRarity.TabIndex = 6;
