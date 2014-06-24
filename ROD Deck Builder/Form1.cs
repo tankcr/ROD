@@ -28,9 +28,12 @@ namespace ROD_Deck_Builder
 
         public Form1()
         {
+
             Array values;
 
             InitializeComponent();
+            pictureBox5.Image = ROD_Deck_Builder.Properties.Resources.ROD;
+            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             List<Card> cardlist = (newpage.TableData.ToList());
 
             lbxRealms.DisplayMember = "Realm";
@@ -234,6 +237,43 @@ namespace ROD_Deck_Builder
                 pictureBox2.Load("" + imgurl2.TableData[0].ImageURL + "");
             }
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            try
+            {
+                pictureBox3.Load("" + imgurl1.TableData[1].ImageURL + "");
+            }
+            catch
+            {
+                pictureBox3.Load("" + imgurl2.TableData[1].ImageURL + "");
+            }
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            try
+            {
+                pictureBox4.Load("" + imgurl1.TableData[2].ImageURL + "");
+            }
+            catch
+            {
+                pictureBox4.Load("" + imgurl2.TableData[2].ImageURL + "");
+            }
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            try
+            {
+                pictureBox5.Load("" + imgurl1.TableData[3].ImageURL + "");
+            }
+            catch
+            {
+                pictureBox5.Load("" + imgurl2.TableData[3].ImageURL + "");
+            }
+            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
+            try
+            {
+                pictureBox6.Load("" + imgurl1.TableData[4].ImageURL + "");
+            }
+            catch
+            {
+                pictureBox6.Load("" + imgurl2.TableData[4].ImageURL + "");
+            }
+            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }

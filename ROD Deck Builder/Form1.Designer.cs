@@ -55,7 +55,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,6 +63,14 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cardBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardTable)).BeginInit();
@@ -71,11 +78,18 @@
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).BeginInit();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // lbxRealms
@@ -219,7 +233,7 @@
             // 
             this.panel8.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm2;
             this.panel8.Controls.Add(this.pictureBox2);
-            this.panel8.Location = new System.Drawing.Point(676, 23);
+            this.panel8.Location = new System.Drawing.Point(145, 23);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(125, 169);
             this.panel8.TabIndex = 17;
@@ -229,7 +243,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Location = new System.Drawing.Point(3, 9);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(119, 147);
+            this.pictureBox2.Size = new System.Drawing.Size(118, 147);
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
             // 
@@ -263,17 +277,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(802, 20);
             this.panel6.TabIndex = 13;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.Image = global::ROD_Deck_Builder.Properties.Resources.ROD;
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(123, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(270, 156);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // panel5
             // 
@@ -349,17 +352,92 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Realms";
             // 
+            // panel9
+            // 
+            this.panel9.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm2;
+            this.panel9.Controls.Add(this.pictureBox3);
+            this.panel9.Location = new System.Drawing.Point(276, 23);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(125, 169);
+            this.panel9.TabIndex = 18;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 9);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(118, 147);
+            this.pictureBox3.TabIndex = 16;
+            this.pictureBox3.TabStop = false;
+            // 
+            // panel10
+            // 
+            this.panel10.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm2;
+            this.panel10.Controls.Add(this.pictureBox4);
+            this.panel10.Location = new System.Drawing.Point(407, 23);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(125, 169);
+            this.panel10.TabIndex = 19;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Location = new System.Drawing.Point(3, 9);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(118, 147);
+            this.pictureBox4.TabIndex = 16;
+            this.pictureBox4.TabStop = false;
+            // 
+            // panel11
+            // 
+            this.panel11.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm2;
+            this.panel11.Controls.Add(this.pictureBox5);
+            this.panel11.Location = new System.Drawing.Point(538, 23);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(125, 169);
+            this.panel11.TabIndex = 20;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox5.Location = new System.Drawing.Point(3, 9);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(118, 147);
+            this.pictureBox5.TabIndex = 16;
+            this.pictureBox5.TabStop = false;
+            // 
+            // panel12
+            // 
+            this.panel12.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm2;
+            this.panel12.Controls.Add(this.pictureBox6);
+            this.panel12.Location = new System.Drawing.Point(669, 23);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(125, 169);
+            this.panel12.TabIndex = 20;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Location = new System.Drawing.Point(3, 9);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(118, 147);
+            this.pictureBox6.TabIndex = 16;
+            this.pictureBox6.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(801, 437);
+            this.Controls.Add(this.panel12);
+            this.Controls.Add(this.panel11);
+            this.Controls.Add(this.panel10);
+            this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.lbxSkills);
             this.Controls.Add(this.panel6);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -370,7 +448,7 @@
             this.Controls.Add(this.lbxRealms);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "ROD Deck Builder";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardTable)).EndInit();
@@ -379,7 +457,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -387,6 +464,14 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).EndInit();
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panel10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -410,7 +495,6 @@
         private System.Data.DataColumn dataColumn11;
         private System.Data.DataColumn dataColumn12;
         private System.Windows.Forms.BindingSource cardBindingSource;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lbxFactions;
         private System.Windows.Forms.ListBox lbxRarity;
@@ -427,6 +511,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }
 
