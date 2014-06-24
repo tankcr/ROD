@@ -219,7 +219,7 @@ namespace ROD_Deck_Builder
             DataView currtable = new DataView(cardTable);
             string selectName = currtable[rowindex]["Name"].ToString();
             Images imgurl = GetImages.GetPageData("http://reignofdragons.wikia.com/wiki/"+selectName);
-            pictureBox2.Load(""+imgurl+"");
+            pictureBox2.Load(""+imgurl.TableData[0]+"");
         }
     }
 }

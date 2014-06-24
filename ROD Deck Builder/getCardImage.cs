@@ -16,6 +16,7 @@ namespace ROD_Deck_Builder
         public event EventHandler TableDataChanged;
 
         private List<Image> tableData;
+        string inner;
         public List<Image> TableData
         {
             get { return tableData; }
@@ -50,14 +51,18 @@ namespace ROD_Deck_Builder
             mydoc.LoadHtml(page);
 
             // Grab the name of each column from the table headers
-            HtmlNode htmltable = mydoc.DocumentNode.SelectSingleNode("(//*[@id='mw-content-text'])");
-            List<HtmlNode> tableRows = htmltable.SelectNodes("figure").OfType<HtmlNode>().Skip(1).ToList();
+            HtmlNode htmltable = mydoc.DocumentNode.SelectSingleNode("(//*[@id]/figure)");
+            string htmlurl = htmltable.Attributes[1].Value;
+            List<HtmlNode> tableRows = htmltable.SelectNodes("a").OfType<HtmlNode>().ToList();
             foreach (HtmlNode row in tableRows)
             {
                 Image item = new Image();
 
-                HtmlNodeCollection rowcolumns = row.SelectNodes("td");
-                item.ImageURL = ParseStringFromHtml(rowcolumns[0]);
+                HtmlNodeCollection rowcolumns = row.SelectNodes("a");
+                string inner = "None";
+                inner = rowcolumns[0].InnerHtml;
+                item.ImageURL = inner;
+                //item.ImageURL = 
                 table.TableData.Add(item);
             }
             return table;
