@@ -37,9 +37,18 @@ namespace ROD_Deck_Builder
 
     public class GetPage
     {
+        private static Dictionary<string, ERealm> realmKey = null;
+
         // Parse the specified URL, populating one Card for each row found in the 'witiable sortable' class.
         public static Cards GetPageData(string url)
         {
+            if (realmKey == null)
+            {
+                realmKey = new Dictionary<string, ERealm>();
+                realmKey.Add("C", ERealm.Chaos);
+                realmKey.Add("G", ERealm.Genesis);
+                realmKey.Add("J", ERealm.Justice);
+            }
             Cards table = new Cards();
             table.TableData = new List<Card>();
 
@@ -161,17 +170,12 @@ namespace ROD_Deck_Builder
         private static ERealm ParseRealm(HtmlNode rowcolumns)
         {
             HtmlNode spanChild1 = rowcolumns.SelectSingleNode("./span");
-            string realm = rowcolumns.SelectSingleNode("./span").InnerText;
+            string realm = spanChild1.InnerText;
             ERealm crealm = ERealm.None;
             Match match = Regex.Match(realm, @"\w+");
-            if (match.Success)
+            if (match.Success && realmKey.ContainsKey(realm))
             {
-                if (realm.Equals("C"))
-                { crealm = ERealm.Chaos; };
-                if (realm.Equals("G"))
-                { crealm = ERealm.Genesis; };
-                if (realm.Equals("J"))
-                { crealm = ERealm.Justice; };
+                crealm = realmKey[realm];
             }
             return crealm;
         }
@@ -216,25 +220,5 @@ namespace ROD_Deck_Builder
 
             return cfaction;
         }
-
-        /*
-        private static EFaction ParseFactionByValue(HtmlNode rowcolumns)
-        {
-            HtmlNode spanChild1 = rowcolumns.SelectSingleNode("./span");
-            string faction = rowcolumns.SelectSingleNode("./span").Attributes;
-            EFaction cfaction = EFaction.None;
-            Match match = Regex.Match(faction, @"\w+");
-            if (match.Success)
-            {
-                if (faction == "\xe2\x9a\x94\x0a")
-                { cfaction = EFaction.Melee; };
-                if (faction == "G")
-                { cfaction = EFaction.Magic; };
-                if (faction == "J")
-                { cfaction = EFaction.Charm; };
-            }
-            return cfaction;
-        }
-        */
     }
 }
