@@ -28,7 +28,6 @@ namespace ROD_Deck_Builder
 
         public Form1()
         {
-
             Array values;
 
             InitializeComponent();
@@ -108,8 +107,7 @@ namespace ROD_Deck_Builder
             drnew["Realm"] = currCard.Realm;
             drnew["Faction"] = currCard.Faction;
             drnew["MATK"] = currCard.MaxAtk;
-            try { drnew["MDEF"] = currCard.MaxDef; }
-            catch { drnew["MDEF"] = "missing"; }
+            drnew["MDEF"] = currCard.MaxDef;
             drnew["Total"] = currCard.Total;
             drnew["Cost"] = currCard.Cost;
             drnew["AttEff"] = currCard.AttEff;
@@ -122,6 +120,7 @@ namespace ROD_Deck_Builder
 
         private void lbxRealms_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Realm
             ListBox.SelectedObjectCollection selecteditems = lbxRealms.SelectedItems;
             realmSelections = new List<string>(selecteditems.Count);
             foreach (string selecteditem in selecteditems)
@@ -147,7 +146,7 @@ namespace ROD_Deck_Builder
 
         private void lbxSkills_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Faction
+            // Skill
             ListBox.SelectedObjectCollection selecteditems = lbxSkills.SelectedItems;
             skillSelections = new List<string>(selecteditems.Count);
             foreach (string selecteditem in selecteditems)
@@ -158,20 +157,14 @@ namespace ROD_Deck_Builder
         }
 
 
-
-
         private void lbxRarity_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Rarity
             ListBox.SelectedObjectCollection selecteditems = lbxRarity.SelectedItems;
             if (selecteditems.Count == 0)
             {
-                Array values = System.Enum.GetNames(typeof(ERarity));
-                raritySelections = new List<string>(values.Length);
-                foreach (string rarity in values)
-                {
-                    raritySelections.Add(rarity);
-                }
+                string[] values = System.Enum.GetNames(typeof(ERarity));
+                raritySelections = values.ToList();
             }
             else
             {
@@ -216,64 +209,34 @@ namespace ROD_Deck_Builder
 
         }
 
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowindex = dataGridView1.CurrentRow.Index;
             DataView currtable = new DataView(cardTable);
-            string selectName = currtable[rowindex]["Name"].ToString();
-            string selectName2 = (currtable[rowindex]["Name"].ToString()).Replace(" ","_");
-            Images imgurl1 = new Images();
-            Images imgurl2 = new Images();
-            imgurl1 = GetImages.GetPageData("http://reignofdragons.wikia.com/wiki/" + selectName);
-            imgurl2 = GetImages.GetPageData("http://reignofdragons.wikia.com/wiki/" + selectName2);
+            string selectName = currtable[rowindex]["Name"].ToString().Replace(" ", "_");
+            Images imgurl = GetImages.GetPageData("http://reignofdragons.wikia.com/wiki/" + selectName);
 
-            //pictureBox2.Height = imgurl.TableData[0].ImageHeight;
-            try
+            if (imgurl != null && imgurl.TableData != null)
             {
-                pictureBox2.Load("" + imgurl1.TableData[0].ImageURL + "");
+                //pictureBox2.Height = imgurl.TableData[0].ImageHeight;
+                try
+                {
+                    pictureBox2.Load(imgurl.TableData[0].ImageURL);
+                    pictureBox3.Load(imgurl.TableData[1].ImageURL);
+                    pictureBox4.Load(imgurl.TableData[2].ImageURL);
+                    pictureBox5.Load(imgurl.TableData[3].ImageURL);
+                    pictureBox6.Load(imgurl.TableData[4].ImageURL);
+                }
+                catch (Exception)
+                {
+                }
+                pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            catch
-            {
-                pictureBox2.Load("" + imgurl2.TableData[0].ImageURL + "");
-            }
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            try
-            {
-                pictureBox3.Load("" + imgurl1.TableData[1].ImageURL + "");
-            }
-            catch
-            {
-                pictureBox3.Load("" + imgurl2.TableData[1].ImageURL + "");
-            }
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            try
-            {
-                pictureBox4.Load("" + imgurl1.TableData[2].ImageURL + "");
-            }
-            catch
-            {
-                pictureBox4.Load("" + imgurl2.TableData[2].ImageURL + "");
-            }
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            try
-            {
-                pictureBox5.Load("" + imgurl1.TableData[3].ImageURL + "");
-            }
-            catch
-            {
-                pictureBox5.Load("" + imgurl2.TableData[3].ImageURL + "");
-            }
-            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
-            try
-            {
-                pictureBox6.Load("" + imgurl1.TableData[4].ImageURL + "");
-            }
-            catch
-            {
-                pictureBox6.Load("" + imgurl2.TableData[4].ImageURL + "");
-            }
-            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }
