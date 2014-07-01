@@ -250,20 +250,24 @@ namespace ROD_Deck_Builder
 
         private void searchbox_cards_TextChanged(object sender, EventArgs e)
         {
+            TextBox searchbox = sender as TextBox;
+            string searchtext = searchbox.Text;
+
+            typednames.Clear();
+            List<Card> cardlist = (newpage.TableData.ToList());
+            foreach (Card card in cardlist)
             {
-                // Rarity
-                String searchtext = searchbox_cards.Text;
+                if (Contains(card.Name, searchtext, StringComparison.OrdinalIgnoreCase))
                 {
-                    typednames.Clear();
-                    List<Card> cardlist = (newpage.TableData.ToList());
-                    foreach (Card card in cardlist)
-                    {
-                        if(card.Name.Contains(searchtext))
-                        {typednames.Add(card.Name);}
-                    }
+                    typednames.Add(card.Name);
                 }
-                UpdateGrid();
             }
+            UpdateGrid();
+        }
+
+        public static bool Contains(string source, string toCheck, StringComparison comp)
+        {
+            return source.IndexOf(toCheck, comp) >= 0;
         }
     }
 }
