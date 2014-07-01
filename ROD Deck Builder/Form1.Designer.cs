@@ -80,6 +80,7 @@
             this.lbxFactions = new System.Windows.Forms.ListBox();
             this.lbxRarity = new System.Windows.Forms.ListBox();
             this.cardBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.searchbox_cards = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardTable)).BeginInit();
             this.panel13.SuspendLayout();
@@ -259,6 +260,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
+            this.tabPage1.Controls.Add(this.searchbox_cards);
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.panel6);
             this.tabPage1.Controls.Add(this.panel12);
@@ -360,7 +362,7 @@
             this.panel7.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm1;
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel7.Controls.Add(this.label3);
-            this.panel7.Location = new System.Drawing.Point(4, 299);
+            this.panel7.Location = new System.Drawing.Point(4, 272);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(103, 29);
             this.panel7.TabIndex = 15;
@@ -370,7 +372,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(33, 7);
+            this.label3.Location = new System.Drawing.Point(33, -1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 3;
@@ -415,7 +417,7 @@
             // lbxSkills
             // 
             this.lbxSkills.FormattingEnabled = true;
-            this.lbxSkills.Location = new System.Drawing.Point(5, 327);
+            this.lbxSkills.Location = new System.Drawing.Point(5, 300);
             this.lbxSkills.Name = "lbxSkills";
             this.lbxSkills.Size = new System.Drawing.Size(101, 69);
             this.lbxSkills.TabIndex = 14;
@@ -483,7 +485,7 @@
             this.panel4.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm1;
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(3, 192);
+            this.panel4.Location = new System.Drawing.Point(3, 173);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(103, 29);
             this.panel4.TabIndex = 11;
@@ -513,7 +515,7 @@
             this.panel3.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.footer_button_sm1;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(3, 95);
+            this.panel3.Location = new System.Drawing.Point(3, 88);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(103, 29);
             this.panel3.TabIndex = 10;
@@ -523,7 +525,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(28, 7);
+            this.label4.Location = new System.Drawing.Point(28, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 3;
@@ -533,7 +535,7 @@
             // lbxFactions
             // 
             this.lbxFactions.FormattingEnabled = true;
-            this.lbxFactions.Location = new System.Drawing.Point(3, 124);
+            this.lbxFactions.Location = new System.Drawing.Point(3, 117);
             this.lbxFactions.Name = "lbxFactions";
             this.lbxFactions.Size = new System.Drawing.Size(103, 56);
             this.lbxFactions.TabIndex = 4;
@@ -542,11 +544,19 @@
             // lbxRarity
             // 
             this.lbxRarity.FormattingEnabled = true;
-            this.lbxRarity.Location = new System.Drawing.Point(4, 221);
+            this.lbxRarity.Location = new System.Drawing.Point(4, 202);
             this.lbxRarity.Name = "lbxRarity";
             this.lbxRarity.Size = new System.Drawing.Size(101, 69);
             this.lbxRarity.TabIndex = 6;
             this.lbxRarity.SelectedIndexChanged += new System.EventHandler(this.lbxRarity_SelectedIndexChanged);
+            // 
+            // searchbox_cards
+            // 
+            this.searchbox_cards.Location = new System.Drawing.Point(5, 377);
+            this.searchbox_cards.Name = "searchbox_cards";
+            this.searchbox_cards.Size = new System.Drawing.Size(101, 20);
+            this.searchbox_cards.TabIndex = 21;
+            this.searchbox_cards.TextChanged += new System.EventHandler(this.searchbox_cards_TextChanged);
             // 
             // Form1
             // 
@@ -568,6 +578,7 @@
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel12.ResumeLayout(false);
@@ -643,6 +654,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.TextBox searchbox_cards;
     }
 }
 

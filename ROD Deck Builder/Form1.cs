@@ -25,6 +25,8 @@ namespace ROD_Deck_Builder
         List<string> realmSelections = new List<string>();
         // List of all of the currently selected rarities
         List<string> raritySelections = new List<string>();
+        //List of Cards from Typed Text
+        List<string> typednames = new List<string>();
 
         public Form1()
         {
@@ -199,6 +201,8 @@ namespace ROD_Deck_Builder
                 else if (raritySelections.Count != 0 && !raritySelections.Contains(currCard.Rarity.ToString()))
                     continue;
 
+                else if (typednames.Count != 0 && !typednames.Contains(currCard.Name.ToString()))
+                    continue;
                 AddCardsToCardtable(ref cardTable, currCard);
             }
         }
@@ -242,6 +246,24 @@ namespace ROD_Deck_Builder
         private void tabPage2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void searchbox_cards_TextChanged(object sender, EventArgs e)
+        {
+            {
+                // Rarity
+                String searchtext = searchbox_cards.Text;
+                {
+                    typednames.Clear();
+                    List<Card> cardlist = (newpage.TableData.ToList());
+                    foreach (Card card in cardlist)
+                    {
+                        if(card.Name.Contains(searchtext))
+                        {typednames.Add(card.Name);}
+                    }
+                }
+                UpdateGrid();
+            }
         }
     }
 }
