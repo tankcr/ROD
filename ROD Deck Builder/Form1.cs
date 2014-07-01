@@ -238,5 +238,10 @@ namespace ROD_Deck_Builder
                 pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

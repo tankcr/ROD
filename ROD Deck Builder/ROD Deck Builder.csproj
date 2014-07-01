@@ -114,6 +114,24 @@
   <ItemGroup>
     <None Include="Resources\footer_button_sm2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warrior-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Knight-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClassBkgd-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClassBkgd-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Knight-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Knight-642.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -63,6 +63,26 @@ namespace ROD_Deck_Builder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ClassBkgd_64 {
+            get {
+                object obj = ResourceManager.GetObject("ClassBkgd-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ClassBkgd_641 {
+            get {
+                object obj = ResourceManager.GetObject("ClassBkgd-641", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap footer_button_01 {
             get {
                 object obj = ResourceManager.GetObject("footer_button_01", resourceCulture);
@@ -133,9 +153,49 @@ namespace ROD_Deck_Builder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Knight_64 {
+            get {
+                object obj = ResourceManager.GetObject("Knight-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Knight_641 {
+            get {
+                object obj = ResourceManager.GetObject("Knight-641", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Knight_642 {
+            get {
+                object obj = ResourceManager.GetObject("Knight-642", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ROD {
             get {
                 object obj = ResourceManager.GetObject("ROD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warrior_64 {
+            get {
+                object obj = ResourceManager.GetObject("warrior-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
