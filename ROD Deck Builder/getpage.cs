@@ -155,7 +155,7 @@ namespace ROD_Deck_Builder
             {
                 int rarity = 0;
                 int.TryParse(match.Value, out rarity);
-                if (rarity >= 1 && rarity <= 7)
+                if (rarity >= 0 && rarity <= 7)
                 {
                     eRarity = (ERarity)rarity;
                 }
