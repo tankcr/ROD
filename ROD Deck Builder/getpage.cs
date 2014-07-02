@@ -87,6 +87,8 @@ namespace ROD_Deck_Builder
                 item.Skill = ParseStringFromHtml(rowcolumns[11]);
                 if (item.Skill == "-") 
                 { item.Skill = "None"; }
+                if (item.Skill.Contains('ε'))
+                { item.Skill = item.Skill.Replace(" (ε)",""); }
                 item.EventSkl1 = ParseStringFromHtml(rowcolumns[12]);
                 item.EventSkl2 = ParseStringFromHtml(rowcolumns[13]);
                 table.TableData.Add(item);

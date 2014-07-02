@@ -154,6 +154,8 @@ namespace ROD_Deck_Builder
             {
                 skillSelections.Add(selecteditem);
             }
+            if (selecteditems.Count == 0) 
+            { lbxSkills.SelectedItem = null; }
             UpdateGrid();
         }
 
@@ -206,12 +208,7 @@ namespace ROD_Deck_Builder
                 else if (factionSelections.Count != 0 && !factionSelections.Contains(currCard.Faction.ToString()))
                     continue;
 
-                else if (skillSelections.Count != 0)
-                { 
-                    if (currCard.Skill.ToString() == "-")
-                    {currCard.Skill = "None";}
-                 }
-                if (!skillSelections.Contains(currCard.Skill.ToString()))
+                else if (skillSelections.Count != 0 && !skillSelections.Contains(currCard.Skill.ToString()))
                     continue;
                 
                 else if (raritySelections.Count != 0 && !raritySelections.Contains(myrarity))
