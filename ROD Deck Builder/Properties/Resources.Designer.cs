@@ -63,6 +63,16 @@ namespace ROD_Deck_Builder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BardIcon {
+            get {
+                object obj = ResourceManager.GetObject("BardIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ClassBkgd_64 {
             get {
                 object obj = ResourceManager.GetObject("ClassBkgd-64", resourceCulture);
@@ -163,9 +173,9 @@ namespace ROD_Deck_Builder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Knight_641 {
+        internal static System.Drawing.Bitmap KnightIcon {
             get {
-                object obj = ResourceManager.GetObject("Knight-641", resourceCulture);
+                object obj = ResourceManager.GetObject("KnightIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +183,19 @@ namespace ROD_Deck_Builder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Knight_642 {
+        internal static System.Drawing.Bitmap MagicianIcon {
             get {
-                object obj = ResourceManager.GetObject("Knight-642", resourceCulture);
+                object obj = ResourceManager.GetObject("MagicianIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MerchantIcon {
+            get {
+                object obj = ResourceManager.GetObject("MerchantIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +213,39 @@ namespace ROD_Deck_Builder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ShamanIcon {
+            get {
+                object obj = ResourceManager.GetObject("ShamanIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ThiefIcon {
+            get {
+                object obj = ResourceManager.GetObject("ThiefIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap warrior_64 {
             get {
                 object obj = ResourceManager.GetObject("warrior-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WarriorIcon {
+            get {
+                object obj = ResourceManager.GetObject("WarriorIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

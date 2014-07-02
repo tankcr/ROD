@@ -200,6 +200,7 @@ namespace ROD_Deck_Builder
             List<Card> cardlist = (newpage.TableData.ToList());
             foreach (Card currCard in cardlist)
             {
+                string myrarity = currCard.Rarity.ToString();
                 if (realmSelections.Count != 0 && !realmSelections.Contains(currCard.Realm.ToString()))
                     continue;
 
@@ -208,8 +209,8 @@ namespace ROD_Deck_Builder
 
                 else if (skillSelections.Count != 0 && !skillSelections.Contains(currCard.Skill.ToString()))
                     continue;
-
-                else if (raritySelections.Count != 0 && !raritySelections.Contains(currCard.Rarity.ToString()))
+                
+                else if (raritySelections.Count != 0 && !raritySelections.Contains(myrarity))
                     continue;
 
                 else if (typednames.Count != 0 && !typednames.Contains(currCard.Name.ToString()))
@@ -279,6 +280,16 @@ namespace ROD_Deck_Builder
         public static bool Contains(string source, string toCheck, StringComparison comp)
         {
             return source.IndexOf(toCheck, comp) >= 0;
+        }
+
+        private void WarriorPicBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            classpictureBox.Image = ROD_Deck_Builder.Properties.Resources.warrior_64;
+        }
+
+        private void pictureBox8_MouseClick(object sender, MouseEventArgs e)
+        {
+            classpictureBox.Image = ROD_Deck_Builder.Properties.Resources.Knight_64;
         }
     }
 }

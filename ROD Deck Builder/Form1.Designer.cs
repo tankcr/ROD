@@ -48,11 +48,6 @@
             this.dataColumn12 = new System.Data.DataColumn();
             this.panel13 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.searchbox_cards = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -80,16 +75,21 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lbxFactions = new System.Windows.Forms.ListBox();
             this.lbxRarity = new System.Windows.Forms.ListBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.WarriorPicBox = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.classpictureBox = new System.Windows.Forms.PictureBox();
             this.cardBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardTable)).BeginInit();
             this.panel13.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -107,6 +107,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WarriorPicBox)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.classpictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -205,57 +215,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(774, 442);
             this.tabControl1.TabIndex = 21;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
-            this.tabPage2.Controls.Add(this.panel14);
-            this.tabPage2.Controls.Add(this.panel5);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(766, 416);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Classes";
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
-            // 
-            // panel14
-            // 
-            this.panel14.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.ClassBkgd_641;
-            this.panel14.Controls.Add(this.pictureBox7);
-            this.panel14.Location = new System.Drawing.Point(9, 93);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(181, 81);
-            this.panel14.TabIndex = 4;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox7.Image = global::ROD_Deck_Builder.Properties.Resources.Knight_642;
-            this.pictureBox7.Location = new System.Drawing.Point(20, 1);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(66, 77);
-            this.pictureBox7.TabIndex = 0;
-            this.pictureBox7.TabStop = false;
-            // 
-            // panel5
-            // 
-            this.panel5.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.ClassBkgd_641;
-            this.panel5.Controls.Add(this.pictureBox1);
-            this.panel5.Location = new System.Drawing.Point(9, 6);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(181, 81);
-            this.panel5.TabIndex = 3;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::ROD_Deck_Builder.Properties.Resources.warrior_64;
-            this.pictureBox1.Location = new System.Drawing.Point(20, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(66, 78);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // tabPage1
             // 
@@ -558,6 +517,130 @@
             this.lbxRarity.TabIndex = 6;
             this.lbxRarity.SelectedIndexChanged += new System.EventHandler(this.lbxRarity_SelectedIndexChanged);
             // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
+            this.tabPage2.Controls.Add(this.pictureBox13);
+            this.tabPage2.Controls.Add(this.pictureBox12);
+            this.tabPage2.Controls.Add(this.pictureBox11);
+            this.tabPage2.Controls.Add(this.pictureBox10);
+            this.tabPage2.Controls.Add(this.pictureBox9);
+            this.tabPage2.Controls.Add(this.pictureBox8);
+            this.tabPage2.Controls.Add(this.WarriorPicBox);
+            this.tabPage2.Controls.Add(this.panel5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(766, 416);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Classes";
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox13.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox13.Image = global::ROD_Deck_Builder.Properties.Resources.BardIcon;
+            this.pictureBox13.Location = new System.Drawing.Point(9, 306);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox13.TabIndex = 10;
+            this.pictureBox13.TabStop = false;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox12.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox12.Image = global::ROD_Deck_Builder.Properties.Resources.ShamanIcon;
+            this.pictureBox12.Location = new System.Drawing.Point(9, 254);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox12.TabIndex = 9;
+            this.pictureBox12.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox11.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox11.Image = global::ROD_Deck_Builder.Properties.Resources.MerchantIcon;
+            this.pictureBox11.Location = new System.Drawing.Point(9, 202);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox11.TabIndex = 8;
+            this.pictureBox11.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox10.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox10.Image = global::ROD_Deck_Builder.Properties.Resources.MagicianIcon;
+            this.pictureBox10.Location = new System.Drawing.Point(9, 149);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox10.TabIndex = 7;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox9.Image = global::ROD_Deck_Builder.Properties.Resources.ThiefIcon;
+            this.pictureBox9.Location = new System.Drawing.Point(9, 100);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox9.TabIndex = 6;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox8.Image = global::ROD_Deck_Builder.Properties.Resources.KnightIcon;
+            this.pictureBox8.Location = new System.Drawing.Point(9, 53);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox8.TabIndex = 5;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox8_MouseClick);
+            // 
+            // WarriorPicBox
+            // 
+            this.WarriorPicBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.WarriorPicBox.BackColor = System.Drawing.Color.Transparent;
+            this.WarriorPicBox.Image = global::ROD_Deck_Builder.Properties.Resources.WarriorIcon;
+            this.WarriorPicBox.Location = new System.Drawing.Point(9, 7);
+            this.WarriorPicBox.Name = "WarriorPicBox";
+            this.WarriorPicBox.Size = new System.Drawing.Size(27, 27);
+            this.WarriorPicBox.TabIndex = 4;
+            this.WarriorPicBox.TabStop = false;
+            this.WarriorPicBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.WarriorPicBox_MouseClick);
+            // 
+            // panel5
+            // 
+            this.panel5.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.ClassBkgd_641;
+            this.panel5.Controls.Add(this.classpictureBox);
+            this.panel5.Location = new System.Drawing.Point(68, 148);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(181, 81);
+            this.panel5.TabIndex = 3;
+            // 
+            // classpictureBox
+            // 
+            this.classpictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.classpictureBox.Image = global::ROD_Deck_Builder.Properties.Resources.warrior_64;
+            this.classpictureBox.Location = new System.Drawing.Point(20, 1);
+            this.classpictureBox.Name = "classpictureBox";
+            this.classpictureBox.Size = new System.Drawing.Size(66, 78);
+            this.classpictureBox.TabIndex = 0;
+            this.classpictureBox.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -572,11 +655,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cardTable)).EndInit();
             this.panel13.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.panel14.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -599,6 +677,16 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WarriorPicBox)).EndInit();
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.classpictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -650,11 +738,16 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox classpictureBox;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.TextBox searchbox_cards;
+        private System.Windows.Forms.PictureBox WarriorPicBox;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.PictureBox pictureBox13;
     }
 }
 

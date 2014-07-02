@@ -61,6 +61,11 @@
     <Compile Include="Image.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="readcardTable.cs" />
     <Compile Include="Skill.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -68,14 +73,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\DataSources\Card.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -118,19 +118,34 @@
     <None Include="Resources\warrior-64.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Knight-64.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ClassBkgd-64.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ClassBkgd-641.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Knight-641.png" />
+    <None Include="Resources\Knight-64.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Knight-642.png" />
+    <None Include="Resources\WarriorIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KnightIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ThiefIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MagicianIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MerchantIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShamanIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BardIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
