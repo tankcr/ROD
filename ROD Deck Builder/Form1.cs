@@ -160,24 +160,35 @@ namespace ROD_Deck_Builder
 
 
         private void lbxRarity_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Rarity
+       {
+            // Faction
             ListBox.SelectedObjectCollection selecteditems = lbxRarity.SelectedItems;
-            if (selecteditems.Count == 0)
+            raritySelections = new List<string>(selecteditems.Count);
+            foreach (string selecteditem in selecteditems)
             {
-                string[] values = System.Enum.GetNames(typeof(ERarity));
-                raritySelections = values.ToList();
-            }
-            else
-            {
-                raritySelections = new List<string>(selecteditems.Count);
-                foreach (object selecteditem in selecteditems)
-                {
-                    raritySelections.Add((string)selecteditem);
-                }
+                raritySelections.Add(selecteditem);
             }
             UpdateGrid();
         }
+        
+        //{
+            // Rarity
+            //ListBox.SelectedObjectCollection selecteditems = lbxRarity.SelectedItems;
+            //if (selecteditems.Count == 0)
+            //{
+            //    string[] values = System.Enum.GetNames(typeof(ERarity));
+            //    raritySelections = values.ToList();
+            //}
+            //else
+            //{
+                //raritySelections = new List<string>(selecteditems.Count);
+                //foreach (object selecteditem in selecteditems)
+                //{
+                    //raritySelections.Add((string)selecteditem);
+                //}
+            //}
+            //UpdateGrid();
+        //}
 
 
         private void UpdateGrid()
