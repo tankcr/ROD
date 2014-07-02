@@ -31,7 +31,6 @@ namespace ROD_Deck_Builder
         public Form1()
         {
             Array values;
-
             InitializeComponent();
             pictureBox5.Image = ROD_Deck_Builder.Properties.Resources.ROD;
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -207,7 +206,12 @@ namespace ROD_Deck_Builder
                 else if (factionSelections.Count != 0 && !factionSelections.Contains(currCard.Faction.ToString()))
                     continue;
 
-                else if (skillSelections.Count != 0 && !skillSelections.Contains(currCard.Skill.ToString()))
+                else if (skillSelections.Count != 0)
+                { 
+                    if (currCard.Skill.ToString() == "-")
+                    {currCard.Skill = "None";}
+                 }
+                if (!skillSelections.Contains(currCard.Skill.ToString()))
                     continue;
                 
                 else if (raritySelections.Count != 0 && !raritySelections.Contains(myrarity))

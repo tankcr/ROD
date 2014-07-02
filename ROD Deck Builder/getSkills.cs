@@ -42,6 +42,7 @@ namespace ROD_Deck_Builder
         {
             Skills table = new Skills();
             table.TableData = new List<Skill>();
+            Skill item = new Skill();
 
             WebClient dl = new WebClient();
             dl.Encoding = Encoding.UTF8;
@@ -60,13 +61,17 @@ namespace ROD_Deck_Builder
             List<HtmlNode> tableRows = htmltable.SelectNodes("tr").OfType<HtmlNode>().Skip(1).ToList();
             foreach (HtmlNode row in tableRows)
             {
-                Skill item = new Skill();
+                item = new Skill();
 
                 HtmlNodeCollection rowcolumns = row.SelectNodes("td");
                 item.SkillName = ParseStringFromHtml(rowcolumns[0]);
                 item.Effect = ParseStringFromHtml(rowcolumns[1]);
                 table.TableData.Add(item);
             }
+            item = new Skill();
+            item.SkillName = "None";
+            item.Effect = "None";
+            table.TableData.Add(item);
             return table;
         }
 

@@ -85,6 +85,8 @@ namespace ROD_Deck_Builder
                 item.DefEff = CalculateDefenseEffect(item.MaxDef, item.Cost);
                 item.OverallEff = CalculateOverallEffect(item.Total, item.Cost);
                 item.Skill = ParseStringFromHtml(rowcolumns[11]);
+                if (item.Skill == "-") 
+                { item.Skill = "None"; }
                 item.EventSkl1 = ParseStringFromHtml(rowcolumns[12]);
                 item.EventSkl2 = ParseStringFromHtml(rowcolumns[13]);
                 table.TableData.Add(item);
@@ -138,7 +140,7 @@ namespace ROD_Deck_Builder
             string result = "";
             try
             {
-                result = Convert.ToString(htmlNode.InnerText).Trim('\r', '\n');
+                result = Convert.ToString(htmlNode.InnerText).Trim('\r', '\n',' ');
             }
             catch (Exception)
             {
@@ -166,6 +168,7 @@ namespace ROD_Deck_Builder
             }
             return eRarity;
         }
+
 
         private static ERealm ParseRealm(HtmlNode rowcolumns)
         {
