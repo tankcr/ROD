@@ -49,11 +49,12 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.searchbox_cards = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -80,14 +81,13 @@
             this.lbxFactions = new System.Windows.Forms.ListBox();
             this.lbxRarity = new System.Windows.Forms.ListBox();
             this.cardBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.searchbox_cards = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.cardtableDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardTable)).BeginInit();
             this.panel13.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -198,8 +198,8 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -219,6 +219,15 @@
             this.tabPage2.Text = "Classes";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // panel14
+            // 
+            this.panel14.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.ClassBkgd_641;
+            this.panel14.Controls.Add(this.pictureBox7);
+            this.panel14.Location = new System.Drawing.Point(9, 93);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(181, 81);
+            this.panel14.TabIndex = 4;
+            // 
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
@@ -228,15 +237,6 @@
             this.pictureBox7.Size = new System.Drawing.Size(66, 77);
             this.pictureBox7.TabIndex = 0;
             this.pictureBox7.TabStop = false;
-            // 
-            // panel14
-            // 
-            this.panel14.BackgroundImage = global::ROD_Deck_Builder.Properties.Resources.ClassBkgd_641;
-            this.panel14.Controls.Add(this.pictureBox7);
-            this.panel14.Location = new System.Drawing.Point(9, 93);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(181, 81);
-            this.panel14.TabIndex = 4;
             // 
             // panel5
             // 
@@ -282,6 +282,14 @@
             this.tabPage1.Size = new System.Drawing.Size(766, 416);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cards";
+            // 
+            // searchbox_cards
+            // 
+            this.searchbox_cards.Location = new System.Drawing.Point(5, 377);
+            this.searchbox_cards.Name = "searchbox_cards";
+            this.searchbox_cards.Size = new System.Drawing.Size(101, 20);
+            this.searchbox_cards.TabIndex = 21;
+            this.searchbox_cards.TextChanged += new System.EventHandler(this.searchbox_cards_TextChanged);
             // 
             // panel1
             // 
@@ -372,7 +380,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(33, -1);
+            this.label3.Location = new System.Drawing.Point(35, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 3;
@@ -495,7 +503,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(33, 7);
+            this.label2.Location = new System.Drawing.Point(33, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 3;
@@ -525,7 +533,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(28, 0);
+            this.label4.Location = new System.Drawing.Point(26, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 3;
@@ -550,14 +558,6 @@
             this.lbxRarity.TabIndex = 6;
             this.lbxRarity.SelectedIndexChanged += new System.EventHandler(this.lbxRarity_SelectedIndexChanged);
             // 
-            // searchbox_cards
-            // 
-            this.searchbox_cards.Location = new System.Drawing.Point(5, 377);
-            this.searchbox_cards.Name = "searchbox_cards";
-            this.searchbox_cards.Size = new System.Drawing.Size(101, 20);
-            this.searchbox_cards.TabIndex = 21;
-            this.searchbox_cards.TextChanged += new System.EventHandler(this.searchbox_cards_TextChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,8 +573,8 @@
             this.panel13.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage1.ResumeLayout(false);
