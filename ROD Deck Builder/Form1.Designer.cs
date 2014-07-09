@@ -76,6 +76,7 @@
             this.lbxFactions = new System.Windows.Forms.ListBox();
             this.lbxRarity = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
@@ -295,6 +296,7 @@
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellContentClick);
             // 
             // panel6
             // 
@@ -520,6 +522,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
+            this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.pictureBox13);
             this.tabPage2.Controls.Add(this.pictureBox12);
             this.tabPage2.Controls.Add(this.pictureBox11);
@@ -535,6 +538,18 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Classes";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.label5.Location = new System.Drawing.Point(255, 161);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(358, 57);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Future Feature";
             // 
             // pictureBox13
             // 
@@ -678,6 +693,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
@@ -748,6 +764,7 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.Label label5;
     }
 }
 

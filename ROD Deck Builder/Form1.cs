@@ -239,11 +239,16 @@ namespace ROD_Deck_Builder
                 //pictureBox2.Height = imgurl.TableData[0].ImageHeight;
                 try
                 {
-                    pictureBox2.Load(imgurl.TableData[0].ImageURL);
-                    pictureBox3.Load(imgurl.TableData[1].ImageURL);
-                    pictureBox4.Load(imgurl.TableData[2].ImageURL);
-                    pictureBox5.Load(imgurl.TableData[3].ImageURL);
-                    pictureBox6.Load(imgurl.TableData[4].ImageURL);
+                    try { pictureBox2.Load(imgurl.TableData[0].ImageURL); }
+                    catch {pictureBox2.Image = null;}
+                    try { pictureBox3.Load(imgurl.TableData[1].ImageURL); }
+                    catch {pictureBox3.Image = null;}
+                    try { pictureBox4.Load(imgurl.TableData[2].ImageURL); }
+                    catch {pictureBox4.Image = null;}
+                    try { pictureBox5.Load(imgurl.TableData[3].ImageURL); }
+                    catch {pictureBox5.Image = null;}
+                    try { pictureBox6.Load(imgurl.TableData[4].ImageURL); }
+                    catch { pictureBox6.Image = null; }
                 }
                 catch (Exception)
                 {
@@ -291,6 +296,40 @@ namespace ROD_Deck_Builder
         private void pictureBox8_MouseClick(object sender, MouseEventArgs e)
         {
             classpictureBox.Image = ROD_Deck_Builder.Properties.Resources.Knight_64;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int rowindex = dataGridView1.CurrentRow.Index;
+            DataView currtable = new DataView(cardTable);
+            string selectName = currtable[rowindex]["Name"].ToString().Replace(" ", "_");
+            Images imgurl = GetImages.GetPageData("http://reignofdragons.wikia.com/wiki/" + selectName);
+
+            if (imgurl != null && imgurl.TableData != null)
+            {
+                //pictureBox2.Height = imgurl.TableData[0].ImageHeight;
+                try
+                {
+                    try { pictureBox2.Load(imgurl.TableData[0].ImageURL); }
+                    catch { pictureBox2.Image = null; }
+                    try { pictureBox3.Load(imgurl.TableData[1].ImageURL); }
+                    catch { pictureBox3.Image = null; }
+                    try { pictureBox4.Load(imgurl.TableData[2].ImageURL); }
+                    catch { pictureBox4.Image = null; }
+                    try { pictureBox5.Load(imgurl.TableData[3].ImageURL); }
+                    catch { pictureBox5.Image = null; }
+                    try { pictureBox6.Load(imgurl.TableData[4].ImageURL); }
+                    catch { pictureBox6.Image = null; }
+                }
+                catch (Exception)
+                {
+                }
+                pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
         }
     }
 }

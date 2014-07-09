@@ -174,10 +174,18 @@ namespace ROD_Deck_Builder
 
         private static ERealm ParseRealm(HtmlNode rowcolumns)
         {
+            string realm;
             HtmlNode spanChild1 = rowcolumns.SelectSingleNode("./span");
-            string realm = spanChild1.InnerText;
+            try { realm = spanChild1.InnerText; }
+            catch { realm = "None"; }
+            //if (realm == "G")
+            //{ realm = "Genesis"; }
+            //else if (realm == "C")
+            //{ realm = "Chaos"; }
+            //else if (realm == "J")
+            //{ realm = "Justice"; }
             ERealm crealm = ERealm.None;
-            Match match = Regex.Match(realm, @"\w+");
+            Match match = Regex.Match(realm.ToString(), @"\w+");
             if (match.Success && realmKey.ContainsKey(realm))
             {
                 crealm = realmKey[realm];
@@ -222,7 +230,6 @@ namespace ROD_Deck_Builder
                             break;
                 }
             }
-
             return cfaction;
         }
     }
