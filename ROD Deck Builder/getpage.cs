@@ -80,11 +80,22 @@ namespace ROD_Deck_Builder
                 item.MaxAtk = ParseIntFromHtml(rowcolumns[4]);
                 item.MaxDef = ParseIntFromHtml(rowcolumns[5]);
                 item.Total = (item.MaxAtk + item.MaxDef);
-                item.Cost = ParseIntFromHtml(rowcolumns[7]);
-                item.AttEff = CalculateAttackEffect(item.MaxAtk, item.Cost);
-                item.DefEff = CalculateDefenseEffect(item.MaxDef, item.Cost);
-                item.OverallEff = CalculateOverallEffect(item.Total, item.Cost);
-                item.Skill = ParseStringFromHtml(rowcolumns[11]);
+                try { item.Cost = ParseIntFromHtml(rowcolumns[7]); }
+                catch { item.Cost = 0 ; }
+                if (item.Cost == null) 
+                { item.Cost = 0; }
+                try { item.AttEff = CalculateAttackEffect(item.MaxAtk, item.Cost); }
+                catch { item.AttEff = 0; }
+                try { item.DefEff = CalculateDefenseEffect(item.MaxDef, item.Cost); }
+                catch { item.DefEff = 0; }
+                try { item.OverallEff = CalculateOverallEffect(item.Total, item.Cost); }
+                catch { item.OverallEff = 0; }
+                try { item.Skill = ParseStringFromHtml(rowcolumns[11]); }
+                catch { item.Skill = "None"; }
+                if (item.Skill == "")
+                { item.Skill = "None"; }
+                if (item.Skill == null)
+                { item.Skill = "None"; }
                 if (item.Skill == "-") 
                 { item.Skill = "None"; }
                 if (item.Skill.Contains('ε'))

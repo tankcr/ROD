@@ -99,6 +99,7 @@ namespace ROD_Deck_Builder
             catch (Exception)
             {
                 System.Diagnostics.Debug.WriteLine("Unable to parse the value.");
+                result = "None";
             }
             return result;
         }
